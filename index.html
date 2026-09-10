@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -288,7 +287,7 @@
 
 <script>
 
-    if (!Array.isArray(races)) {
+    if (typeof races === "undefined" || !Array.isArray(races)) {
 
         document.getElementById("raceList").innerHTML = `
             <div class="empty">
@@ -327,9 +326,9 @@
 
         function createRaceCard(race) {
 
-            const distanceHTML = race.distances
-                .map(distance => `<span class="badge">${distance}</span>`)
-                .join("");
+            const distanceHTML = Array.isArray(race.distances)
+                ? race.distances.map(distance => `<span class="badge">${distance}</span>`).join("")
+                : "";
 
             const statusClass = getStatusClass(race.status);
 
@@ -356,7 +355,7 @@
 
                     ${
                         race.url
-                        ? `<a class="home-link" href="${race.url}" target="_blank">
+                        ? `<a class="home-link" href="${race.url}" target="_blank" rel="noopener noreferrer">
                             공식 홈페이지 →
                            </a>`
                         : `<span class="home-link">
@@ -372,114 +371,4 @@
         function searchRaces() {
 
             const keyword = keywordInput.value.trim().toLowerCase();
-            const region = regionSelect.value;
-            const distance = distanceSelect.value;
-            const month = monthSelect.value;
-
-
-            const results = races.filter(race => {
-
-                const keywordMatch =
-                    !keyword ||
-                    String(race.name || "")
-                        .toLowerCase()
-                        .includes(keyword);
-
-
-                const regionMatch =
-                    !region ||
-                    race.region === region;
-
-
-                const distanceMatch =
-                    !distance ||
-                    (
-                        Array.isArray(race.distances) &&
-                        race.distances.includes(distance)
-                    );
-
-
-                const monthMatch =
-                    !month ||
-                    String(race.date || "").substring(5, 7) === month;
-
-
-                return (
-                    keywordMatch &&
-                    regionMatch &&
-                    distanceMatch &&
-                    monthMatch
-                );
-
-            });
-
-
-            results.sort((a, b) => {
-
-                return String(a.date).localeCompare(String(b.date));
-
-            });
-
-
-            resultInfo.textContent =
-                `🎯 ${results.length}개의 대회를 찾았습니다.`;
-
-
-            if (results.length === 0) {
-
-                raceList.innerHTML = `
-                    <div class="empty">
-                        <h3>😢 검색 결과가 없습니다.</h3>
-                        <p>지역, 거리, 월 또는 검색어를 바꿔보세요.</p>
-                    </div>
-                `;
-
-                return;
-            }
-
-
-            raceList.innerHTML =
-                results.map(createRaceCard).join("");
-        }
-
-
-        searchBtn.addEventListener("click", searchRaces);
-
-
-        keywordInput.addEventListener("keydown", function(event) {
-
-            if (event.key === "Enter") {
-
-                searchRaces();
-
-            }
-
-        });
-
-
-        regionSelect.addEventListener("change", searchRaces);
-        distanceSelect.addEventListener("change", searchRaces);
-        monthSelect.addEventListener("change", searchRaces);
-
-
-        resetBtn.addEventListener("click", function() {
-
-            keywordInput.value = "";
-            regionSelect.value = "";
-            distanceSelect.value = "";
-            monthSelect.value = "";
-
-            searchRaces();
-
-        });
-
-
-        searchRaces();
-
-    }
-
-</script>
-
-</body>
-</html>
-```
+            const
