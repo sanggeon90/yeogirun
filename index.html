@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>어디런 - 전국 마라톤 대회</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 28px 20px;
+        }
+
+        header .inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            color: #d1d5db;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+
+        .search-box h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 10px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            height: 46px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input,
+        select {
+            border: 1px solid #d1d5db;
+            padding: 0 12px;
+            background: white;
+        }
+
+        button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .reset-btn {
+            margin-top: 10px;
+            width: auto;
+            background: #6b7280;
+        }
+
+        .reset-btn:hover {
+            background: #4b5563;
+        }
+
+        .result-info {
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .race-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .race-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .status.open {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status.soon {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .race-card h3 {
+            margin: 0 0 12px;
+            font-size: 21px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .badge {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .info {
+            line-height: 1.8;
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+
+        .empty {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 16px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 800px) {
+            .search-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .search-grid input {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="inner">
+        <h1>🏃 어디런</h1>
+        <p>전국 마라톤 대회를 한눈에 찾아보세요</p>
+    </div>
+</header>
+
+<main>
+
+    <section class="search-box">
+
+        <h2>🔎 마라톤 대회 검색</h2>
+
+        <div class="search-grid">
+
+            <input
+                type="text"
+                id="keyword"
+                placeholder="대회 이름을 검색하세요"
+            >
+
+            <select id="region">
+                <option value="">전체 지역</option>
+                <option value="서울">서울</option>
+                <option value="경기">경기</option>
+                <option value="인천">인천</option>
+                <option value="강원">강원</option>
+                <option value="대전">대전</option>
+                <option value="세종">세종</option>
+                <option value="충북">충북</option>
+                <option value="충남">충남</option>
+                <option value="광주">광주</option>
+                <option value="전북">전북</option>
+                <option value="전남">전남</option>
+                <option value="부산">부산</option>
+                <option value="울산">울산</option>
+                <option value="경남">경남</option>
+                <option value="대구">대구</option>
+                <option value="경북">경북</option>
+                <option value="제주">제주</option>
+            </select>
+
+            <select id="distance">
+                <option value="">전체 거리</option>
+                <option value="5km">5km</option>
+                <option value="10km">10km</option>
+                <option value="하프">하프</option>
+                <option value="풀코스">풀코스</option>
+            </select>
+
+            <select id="month">
+                <option value="">전체 월</option>
+                <option value="09">9월</option>
+                <option value="10">10월</option>
+                <option value="11">11월</option>
+                <option value="12">12월</option>
+            </select>
+
+            <button id="searchBtn">검색</button>
+
+        </div>
+
+        <button class="reset-btn" id="resetBtn">
+            초기화
+        </button>
+
+    </section>
+
+    <div class="result-info" id="resultInfo"></div>
+
+    <section class="race-list" id="raceList"></section>
+
+</main>
+
+<script src="races.js"></script>
+
+<script>
+
+    // races.js가 정상적으로 불러와졌는지 확인
+    if (!Array.isArray(races)) {
+
+        document.getElementById("raceList").innerHTML = `
+            <div class="empty">
+                <h3>대회 데이터를 불러오지 못했습니다.</h3>
+                <p>races.js 파일이 index.html과 같은 폴더에 있는지 확인해주세요.</p>
+            </div>
+        `;
+
+    } else {
+
+        const keywordInput = document.getElementById("keyword");
+        const regionSelect = document.getElementById("region");
+        const distanceSelect = document.getElementById("distance");
+        const monthSelect = document.getElementById("month");
+
+        const searchBtn = document.getElementById("searchBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const raceList = document.getElementById("raceList");
+        const resultInfo = document.getElementById("resultInfo");
+
+
+        // 대회 상태에 따른 CSS 클래스
+        function getStatusClass(status) {
+
+            if (status === "접수 중") {
+                return "open";
+            }
+
+            if (status === "접수 예정") {
+                return "soon";
+            }
+
+            return "";
+        }
+
+
+        // 대회 카드 하나 만들기
+        function createRaceCard(race) {
+
+            const distanceHTML = race.distances
+                .map(distance => `<span class="badge">${distance}</span>`)
+                .join("");
+
+            const statusClass = getStatusClass(race.status);
+
+            return `
+                <article class="race-card">
+
+                    <div class="status ${statusClass}">
+                        ${race.status || "상태 확인 필요"}
+                    </div>
+
+                    <h3>${race.name}</h3>
+
+                    <div class="badges">
+                        ${distanceHTML}
+                    </div>
+
+                    <div class="info">
+                        📅 날짜 : ${race.date}<br>
+                        📍 지역 : ${race.region}<br>
+                        🏟 장소 : ${race.place}<br>
+                        💰 참가비 : ${race.price || "공식 홈페이지 확인"}<br>
+                        📝 접수기간 : ${race.period || "공식 홈페이지 확인"}
+                    </div>
+
+                    ${
+                        race.url
+                        ? `<a class="home-link" href="${race.url}" target="_blank">
+                            공식 홈페이지 →
+                           </a>`
+                        : `<span class="home-link">
+                            공식 홈페이지 확인
+                           </span>`
+                    }
+
+                </article>
+            `;
+        }
+
+
+        // 검색 실행
+        function searchRaces() {
+
+            const keyword = keywordInput.value.trim().toLowerCase();
+            const region = regionSelect.value;
+            const distance = distanceSelect.value;
+            const month = monthSelect.value;
+
+
+            const results = races.filter(race => {
+
+                // 대회명 검색
+                const keywordMatch =
+                    !keyword ||
+                    String(race.name || "")
+                        .toLowerCase()
+                        .includes(keyword);
+
+
+                // 지역 검색
+                const regionMatch =
+                    !region ||
+                    race.region === region;
+
+
+                // 거리 검색
+                const distanceMatch =
+                    !distance ||
+                    (
+                        Array.isArray(race.distances) &&
+                        race.distances.includes(distance)
+                    );
+
+
+                // 월 검색
+                const monthMatch =
+                    !month ||
+                    String(race.date || "").substring(5, 7) === month;
+
+
+                return (
+                    keywordMatch &&
+                    regionMatch &&
+                    distanceMatch &&
+                    monthMatch
+                );
+
+            });
+
+
+            // 날짜순 정렬
+            results.sort((a, b) => {
+
+                return String(a.date).localeCompare(String(b.date));
+
+            });
+
+
+            // 결과 숫자
+            resultInfo.textContent =
+                `🎯 ${results.length}개의 대회를 찾았습니다.`;
+
+
+            // 결과 표시
+            if (results.length === 0) {
+
+                raceList.innerHTML = `
+                    <div class="empty">
+                        <h3>😢 검색 결과가 없습니다.</h3>
+                        <p>지역, 거리, 월 또는 검색어를 바꿔보세요.</p>
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            raceList.innerHTML =
+                results.map(createRaceCard).join("");
+        }
+
+
+        // 검색 버튼
+        searchBtn.addEventListener("click", searchRaces);
+
+
+        // 엔터키로 검색
+        keywordInput.addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                searchRaces();
+
+            }
+
+        });
+
+
+        // 필터 변경 시 바로 검색
+        regionSelect.addEventListener("change", searchRaces);
+        distanceSelect.addEventListener("change", searchRaces);
+        monthSelect.addEventListener("change", searchRaces);
+
+
+        // 초기화
+        resetBtn.addEventListener("click", function() {
+
+            keywordInput.value = "";
+            regionSelect.value = "";
+            distanceSelect.value = "";
+            monthSelect.value = "";
+
+            searchRaces();
+
+        });
+
+
+        // 처음 페이지 열었을 때 전체 대회 표시
+        searchRaces();
+
+    }
+
+</script>
+
+</body>
+</html>

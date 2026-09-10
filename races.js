@@ -1,0 +1,1134 @@
+const races = [
+
+    // =========================
+    // 2026년 9월
+    // =========================
+
+    {
+        name: "2026 에너지 히어로 레이스",
+        date: "2026-09-12",
+        region: "서울",
+        place: "서울월드컵공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://www.herorace.kr/"
+    },
+
+    {
+        name: "2026 청주 나이트 런 페스티벌",
+        date: "2026-09-12",
+        region: "충북",
+        place: "청주시 무심천 체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://n-runplus.co.kr/"
+    },
+
+    {
+        name: "제26회 강화해변마라톤대회",
+        date: "2026-09-13",
+        region: "인천",
+        place: "강화 함상공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-10 ~ 2026-09-30",
+        url: "https://www.ganghwamarathon.co.kr/"
+    },
+
+    {
+        name: "달리는 세상 10km 런",
+        date: "2026-09-13",
+        region: "대전",
+        place: "대전엑스포시민광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 금산인삼축제 마라톤",
+        date: "2026-09-19",
+        region: "충남",
+        place: "금산세계인삼엑스포주차장",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 인천송도국제마라톤대회",
+        date: "2026-09-20",
+        region: "인천",
+        place: "국립 인천대학교 송도캠퍼스",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-08 ~ 2026-08-07",
+        url: "https://www.songdorun.net/"
+    },
+
+    // =========================
+    // 2026년 10월
+    // =========================
+
+    {
+        name: "2026 춘천연합마라톤",
+        date: "2026-10-03",
+        region: "강원",
+        place: "엘리시안 강촌 및 북한강 일원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-16 ~ 2026-08-31",
+        url: "https://www.yonma.kr/"
+    },
+
+    {
+        name: "2026 마스터즈 하프마라톤",
+        date: "2026-10-03",
+        region: "서울",
+        place: "상암 월드컵공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "SMTOWN RUN CLUB 26",
+        date: "2026-10-03",
+        region: "인천",
+        place: "인천 영종도 왕산마리나항",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://smtownrunclub.com/"
+    },
+
+    {
+        name: "2026 천사데이기념 동두천천사마라톤",
+        date: "2026-10-03",
+        region: "경기",
+        place: "경기도 동두천시 캠프보산",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 서산 코스모스 황금들녘 마라톤",
+        date: "2026-10-03",
+        region: "충남",
+        place: "서산스포츠테마파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 안동마라톤대회",
+        date: "2026-10-04",
+        region: "경북",
+        place: "안동시민운동장",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제23회 경남마라톤",
+        date: "2026-10-04",
+        region: "경남",
+        place: "창원종합운동장",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제23회 강남국제평화마라톤",
+        date: "2026-10-05",
+        region: "서울",
+        place: "봉은사로 삼성1동주민센터 앞",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://www.peacemarathon.co.kr/"
+    },
+
+    {
+        name: "2026 한경서울마라톤",
+        date: "2026-10-05",
+        region: "서울",
+        place: "여의도공원 문화의 마당",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://emarathon.or.kr/marathon/code/8048/"
+    },
+
+    {
+        name: "2026 울산마라톤",
+        date: "2026-10-11",
+        region: "울산",
+        place: "울산종합운동장 및 울산 일원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-27 ~ 2026-09-30",
+        url: "https://run.uaf.co.kr/"
+    },
+
+    {
+        name: "2026 Global 6k for Water 마라톤 구미대회",
+        date: "2026-10-11",
+        region: "경북",
+        place: "구미낙동강체육공원",
+        distances: ["6km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://wvgumi6k2026-self.vercel.app/"
+    },
+
+    {
+        name: "제25회 대청호마라톤대회",
+        date: "2026-10-18",
+        region: "대전",
+        place: "대청공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://www.dcmarathon.or.kr/"
+    },
+
+    {
+        name: "제23회 여주 세종대왕 마라톤",
+        date: "2026-10-18",
+        region: "경기",
+        place: "여주 현암지구공원",
+        distances: ["하프", "10km", "4km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제22회 대구 북구사랑 마라톤",
+        date: "2026-10-18",
+        region: "대구",
+        place: "금호강 산격야영장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://maraton.dbsfa365.co.kr/"
+    },
+
+    {
+        name: "2026 뉴시스 바다마라톤",
+        date: "2026-10-24",
+        region: "인천",
+        place: "인천 영종도 씨사이드파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://emarathon.or.kr/marathon/code/8049/"
+    },
+
+    {
+        name: "제19회 청도반시 전국마라톤",
+        date: "2026-10-25",
+        region: "경북",
+        place: "청도공설운동장",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제21회 사천노을마라톤대회",
+        date: "2026-10-31",
+        region: "경남",
+        place: "사천 선진거북선공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://www.sunset.or.kr/"
+    },
+
+    // =========================
+    // 2026년 11월
+    // =========================
+
+    {
+        name: "2026 DMZ OPEN 평화 마라톤",
+        date: "2026-11-01",
+        region: "경기",
+        place: "파주 임진각 평화누리",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 JTBC 서울마라톤",
+        date: "2026-11-01",
+        region: "서울",
+        place: "상암월드컵공원",
+        distances: ["풀코스", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제21회 울산인권마라톤",
+        date: "2026-11-01",
+        region: "울산",
+        place: "태화강 둔치",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-18 ~ 2026-09-18",
+        url: ""
+    },
+
+    {
+        name: "2026 김천전국마라톤대회",
+        date: "2026-11-01",
+        region: "경북",
+        place: "김천종합스포츠타운",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://gcmarathon.co.kr/"
+    },
+
+    {
+        name: "2026 순천 남승룡 마라톤",
+        date: "2026-11-04",
+        region: "전남",
+        place: "순천팔마종합운동장",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 영천댐 마라톤",
+        date: "2026-11-07",
+        region: "경북",
+        place: "영천댐 하류공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "2026-09-01 ~ 2026-09-30",
+        period: "2026-09-01 ~ 2026-09-30",
+        url: "https://runyc.kr/"
+    },
+
+    {
+        name: "2026 해양수도 부산 런페스타",
+        date: "2026-11-07",
+        region: "부산",
+        place: "부산 북항친수공원",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제15회 부여 굿뜨래 마라톤",
+        date: "2026-11-07",
+        region: "충남",
+        place: "부여 구드래나루터",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-30 ~ 2026-10-07",
+        url: ""
+    },
+
+    {
+        name: "2026 해남땅끝 전국마라톤대회",
+        date: "2026-11-08",
+        region: "전남",
+        place: "대흥사쉼터 일원",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-13 ~ 2026-10-14",
+        url: "https://haenammarathon.co.kr/"
+    },
+
+    {
+        name: "제12회 아산 은행나무길 전국마라톤",
+        date: "2026-11-08",
+        region: "충남",
+        place: "현충사 은행나무길 광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://asanmarathon.co.kr/"
+    },
+
+    {
+        name: "2026 전국사상에코마라톤",
+        date: "2026-11-08",
+        region: "부산",
+        place: "삼락생태공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://www.ssecorun.co.kr/"
+    },
+
+    {
+        name: "2026 부산 헤리티지 런",
+        date: "2026-11-08",
+        region: "부산",
+        place: "다대포 해수욕장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-25 ~ 2026-10-19",
+        url: "https://www.heritagerun.co.kr/"
+    },
+
+    {
+        name: "2026 손기정평화마라톤",
+        date: "2026-11-15",
+        region: "경기",
+        place: "파주 임진각",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: "https://son.wizrun.com/"
+    },
+
+    {
+        name: "2026 제주감귤국제마라톤",
+        date: "2026-11-15",
+        region: "제주",
+        place: "조천운동장",
+        distances: ["풀코스", "하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-06 ~ 2026-09-11",
+        url: ""
+    },
+
+    {
+        name: "제28회 부산국제마라톤",
+        date: "2026-11-15",
+        region: "부산",
+        place: "다대포해수욕장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-02 ~ 2026-09-18",
+        url: "https://kjmarathon.com/"
+    },
+
+    {
+        name: "제24회 상주 곶감 마라톤",
+        date: "2026-11-15",
+        region: "경북",
+        place: "상주시민운동장",
+        distances: ["풀코스", "하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 인천마라톤",
+        date: "2026-11-22",
+        region: "인천",
+        place: "인천아시아드 주경기장",
+        distances: ["풀코스", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-09-07 ~ 2026-10-07",
+        url: "https://incheonmarathon.or.kr/"
+    },
+
+    {
+        name: "2026 남원 춘향 전국 마라톤",
+        date: "2026-11-28",
+        region: "전북",
+        place: "남원 종합스포츠타운",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-07 ~ 2026-10-28",
+        url: ""
+    },
+
+    // =========================
+    // 2026년 12월
+    // =========================
+
+    {
+        name: "제23회 한강시민마라톤",
+        date: "2026-12-05",
+        region: "서울",
+        place: "여의도 물빛무대 앞 광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-01 ~ 2026-10-28",
+        url: ""
+    },
+
+    {
+        name: "2026 하남 미사 호수 에너지런",
+        date: "2026-12-05",
+        region: "경기",
+        place: "하남미사 경정공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-01 ~ 2026-11-26",
+        url: ""
+    },
+
+    {
+        name: "2026 부산브릿지마라톤대회",
+        date: "2026-12-06",
+        region: "부산",
+        place: "부산 벡스코 일대",
+        distances: ["풀코스", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 황영조 로드레이스",
+        date: "2026-12-06",
+        region: "인천",
+        place: "경인아라뱃길 여객터미널",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-14 ~ 2026-10-30",
+        url: "https://roadracing.co.kr/"
+    },
+
+    {
+        name: "제5회 기장군육상연맹 마라톤",
+        date: "2026-12-13",
+        region: "부산",
+        place: "부산 기장 대변항 멸치광장",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-27 ~ 2026-10-31",
+        url: ""
+    },
+
+    {
+        name: "제5회 밤섬 마라톤",
+        date: "2026-12-13",
+        region: "서울",
+        place: "상암월드컵경기장 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-01 ~ 2026-12-06",
+        url: "https://www.bamseom.com/"
+    },
+
+    {
+        name: "제36회 진주마라톤",
+        date: "2026-12-13",
+        region: "경남",
+        place: "진주종합경기장",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "2026-10-22 ~ 2026-11-16",
+        url: ""
+    },
+
+    {
+        name: "제2회 청춘 릴레이 마라톤",
+        date: "2026-12-19",
+        region: "서울",
+        place: "상암월드컵공원 평화의광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-12 ~ 2026-12-09",
+        url: ""
+    },
+
+    {
+        name: "26서울동행마라톤대회",
+        date: "2026-11-01",
+        region: "서울",
+        place: "목동종합운동장 주경기장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-10 ~ 2026-10-02",
+        url: ""
+    },
+
+    {
+        name: "2026 무안 해안 노을길 걷기 및 마라톤",
+        date: "2026-11-01",
+        region: "전남",
+        place: "무안낙지공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "GVIE RUN 2026 구미",
+        date: "2026-11-07",
+        region: "경북",
+        place: "구미 낙동강체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-12 ~ 2026-10-09",
+        url: "https://giverun.kr/"
+    },
+
+    {
+        name: "제19회 진해마라톤",
+        date: "2026-11-07",
+        region: "경남",
+        place: "진해공설운동장 및 해군 영내 일원",
+        distances: ["5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 대구 금호강 건강달리기",
+        date: "2026-11-07",
+        region: "대구",
+        place: "동촌유원지 금호강 둔치",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제20회 자원봉사 사랑 굿펀마라톤대회",
+        date: "2026-11-08",
+        region: "서울",
+        place: "신정교 하부 육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-27 ~ 2026-10-16",
+        url: ""
+    },
+
+    {
+        name: "제2회 완주군 만경강 마라톤대회",
+        date: "2026-11-08",
+        region: "전북",
+        place: "완주군 봉동읍 봉동교 일원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 라운드랩 RUN",
+        date: "2026-11-08",
+        region: "강원",
+        place: "춘천 송암스포츠타운 종합경기장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-07 ~ 2026-10-23",
+        url: ""
+    },
+
+    {
+        name: "경주시육상연맹회장배 마라톤대회",
+        date: "2026-11-08",
+        region: "경북",
+        place: "경주서천둔치 생활체육광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-21 ~ 2026-10-08",
+        url: ""
+    },
+
+    {
+        name: "제11회 송파구청장배 마라톤",
+        date: "2026-11-08",
+        region: "서울",
+        place: "송파구 여성축구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-01 ~ 2026-10-15",
+        url: ""
+    },
+
+    {
+        name: "2026 양산 배내골 애플 런",
+        date: "2026-11-08",
+        region: "경남",
+        place: "장선마을회관 앞 운동장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제26회 안성맞춤 전국 마라톤대회",
+        date: "2026-11-08",
+        region: "경기",
+        place: "안성맞춤랜드 일원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "제2회 안양천 단풍길 마라톤",
+        date: "2026-11-14",
+        region: "서울",
+        place: "신정교 하부 영롱이 억새구장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-31 ~ 2026-11-05",
+        url: ""
+    },
+
+    {
+        name: "9회 서울평화마라톤대회",
+        date: "2026-11-15",
+        region: "서울",
+        place: "신정교 하부 육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-08 ~ 2026-10-16",
+        url: ""
+    },
+
+    {
+        name: "제24회 고창고인돌마라톤대회",
+        date: "2026-11-15",
+        region: "전북",
+        place: "고창공설운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-01 ~ 2026-08-31",
+        url: ""
+    },
+
+    {
+        name: "제4회 영남알프스 전국 하프마라톤",
+        date: "2026-11-15",
+        region: "울산",
+        place: "상북면민운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-09-01 ~ 2026-09-30",
+        url: ""
+    },
+
+    {
+        name: "2026 평화의숲 마라톤",
+        date: "2026-11-22",
+        region: "서울",
+        place: "상암 월드컵공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 서울 억새풀 마라톤대회",
+        date: "2026-11-22",
+        region: "서울",
+        place: "영등포 영롱이 억새구장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-17 ~ 2026-10-30",
+        url: ""
+    },
+
+    {
+        name: "자이스 스마일 레이스",
+        date: "2026-11-22",
+        region: "서울",
+        place: "여의도공원 문화의 마당",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-10 ~ 2026-10-18",
+        url: ""
+    },
+
+    {
+        name: "2027 서울 세계청년대회 성공 기원 평화런",
+        date: "2026-11-28",
+        region: "서울",
+        place: "여의도공원 문화의마당",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-14 ~ 2026-10-24",
+        url: ""
+    },
+
+    {
+        name: "제14회 안중근 평화 마라톤 대회",
+        date: "2026-11-29",
+        region: "서울",
+        place: "여의도공원 문화의마당",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 새한미디어 마라톤",
+        date: "2026-11-29",
+        region: "서울",
+        place: "평화의공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-17 ~ 2026-11-16",
+        url: ""
+    },
+
+    {
+        name: "제2회 천안독립기념관 마라톤대회",
+        date: "2026-11-29",
+        region: "충남",
+        place: "천안 독립기념관 겨레의큰마당",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-18",
+        url: ""
+    },
+
+    {
+        name: "2026 전국마라톤협회 금산 골드런 마라톤",
+        date: "2026-12-05",
+        region: "충남",
+        place: "금산세계인삼엑스포주차장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 소년소녀 가장 돕기 기부런",
+        date: "2026-12-12",
+        region: "서울",
+        place: "월드컵공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-01 ~ 2026-11-30",
+        url: ""
+    },
+
+    {
+        name: "2026 양양 강변 전국 마라톤",
+        date: "2026-09-12",
+        region: "강원",
+        place: "강원도 양양군 웰컴센터 및 남대천 일원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-02-27 ~ 2026-05-31",
+        url: "https://yrun.wizrun.com/"
+    },
+
+    {
+        name: "제2회 초록우산 런웨이 마라톤 2026",
+        date: "2026-09-12",
+        region: "대전",
+        place: "대전엑스포시민광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-04-13 ~ 2026-06-16",
+        url: ""
+    },
+
+    {
+        name: "제6회 계란 마라톤",
+        date: "2026-09-12",
+        region: "인천",
+        place: "경인아라뱃길 여객터미널",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-08-06 ~ 2026-08-26",
+        url: ""
+    },
+
+    {
+        name: "2026 굿네이버스 레이스",
+        date: "2026-09-12",
+        region: "서울",
+        place: "여의도 한강공원 물빛무대 앞",
+        distances: ["10km", "5km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "공식 홈페이지 확인",
+        url: "https://gnrace.kr/"
+    },
+
+    {
+        name: "서울올림픽기념 88RUN",
+        date: "2026-09-12",
+        region: "경기",
+        place: "미사경정공원",
+        distances: ["10km", "5km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "공식 홈페이지 확인",
+        url: "https://88run.kr/"
+    },
+
+    {
+        name: "2026 장수 레드푸드레이스",
+        date: "2026-09-12",
+        region: "전북",
+        place: "장수말역사체험관",
+        distances: ["10km", "5km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "공식 홈페이지 확인",
+        url: "https://rocknrun.kr/REDFOODRACE_INFO"
+    },
+
+    {
+        name: "제2회 화이트런 생리대 기부마라톤",
+        date: "2026-09-12",
+        region: "서울",
+        place: "영등포구 신정교 하부 육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "공식 홈페이지 확인",
+        url: ""
+    },
+
+    {
+        name: "제16회 스마일런 페스티벌",
+        date: "2026-09-13",
+        region: "서울",
+        place: "상암동 평화의공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-29 ~ 2026-07-31",
+        url: "https://smilerun.co.kr/"
+    },
+
+    {
+        name: "2026 울진 금강송배 힐링마라톤",
+        date: "2026-09-13",
+        region: "경북",
+        place: "울진종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-01-01 ~ 2026-06-30",
+        url: ""
+    },
+
+    {
+        name: "2026 포항 이차전지 전국마라톤",
+        date: "2026-09-13",
+        region: "경북",
+        place: "포항운하관 주차장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-29 ~ 2026-07-20",
+        url: ""
+    },
+
+    {
+        name: "2026 런서울런",
+        date: "2026-09-13",
+        region: "서울",
+        place: "서울광장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-29 ~ 2026-07-29",
+        url: ""
+    },
+
+    {
+        name: "2026 안양천 하프 마라톤",
+        date: "2026-09-19",
+        region: "경기",
+        place: "신정교 하부 영롱이 억새구장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-06 ~ 2026-09-10",
+        url: ""
+    },
+
+    {
+        name: "2026 무한도전 Run in 경주",
+        date: "2026-09-19",
+        region: "경북",
+        place: "경주시민운동장 일대",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-14까지",
+        url: ""
+    },
+
+    {
+        name: "제19회 가평자라섬 전국마라톤",
+        date: "2026-09-20",
+        region: "경기",
+        place: "가평종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-04-14 ~ 2026-05-30",
+        url: ""
+    },
+
+    {
+        name: "2026 공주백제 마라톤",
+        date: "2026-09-20",
+        region: "충남",
+        place: "공주시민운동장",
+        distances: ["풀코스", "하프", "10km"],
+        status: "접수 예정",
+        price: "공식 홈페이지 확인",
+        period: "공식 홈페이지 확인",
+        url: "https://www.gongjumarathon.com/45"
+    },
+
+    {
+        name: "제20회 선사마라톤 축제",
+        date: "2026-09-20",
+        region: "서울",
+        place: "서울 암사동 유적 앞 특설무대",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-08 ~ 2026-06-11",
+        url: ""
+    },
+
+    {
+        name: "2026 동대문마라톤",
+        date: "2026-09-20",
+        region: "서울",
+        place: "중랑천 제1수변공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-10 ~ 2026-08-10",
+        url: ""
+    },
+
+    {
+        name: "2026 안산마라톤",
+        date: "2026-09-20",
+        region: "경기",
+        place: "대부향기테마파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-07-06 ~ 2026-07-20",
+        url: "https://ansanrun.com/"
+    },
+
+    {
+        name: "제2회 마포구청장배 마라톤",
+        date: "2026-09-20",
+        region: "서울",
+        place: "평화의공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-23 ~ 2026-08-20",
+        url: ""
+    }
+];
