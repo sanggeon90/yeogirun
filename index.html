@@ -203,6 +203,14 @@
             .search-grid {
                 grid-template-columns: 1fr;
             }
+
+            .search-grid input {
+                grid-column: auto;
+            }
+
+            .reset-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -327,7 +335,9 @@
         function createRaceCard(race) {
 
             const distanceHTML = Array.isArray(race.distances)
-                ? race.distances.map(distance => `<span class="badge">${distance}</span>`).join("")
+                ? race.distances
+                    .map(distance => `<span class="badge">${distance}</span>`)
+                    .join("")
                 : "";
 
             const statusClass = getStatusClass(race.status);
@@ -355,7 +365,12 @@
 
                     ${
                         race.url
-                        ? `<a class="home-link" href="${race.url}" target="_blank" rel="noopener noreferrer">
+                        ? `<a
+                            class="home-link"
+                            href="${race.url}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             공식 홈페이지 →
                            </a>`
                         : `<span class="home-link">
@@ -370,5 +385,121 @@
 
         function searchRaces() {
 
-            const keyword = keywordInput.value.trim().toLowerCase();
-            const
+            const keyword =
+                keywordInput.value.trim().toLowerCase();
+
+            const region =
+                regionSelect.value;
+
+            const distance =
+                distanceSelect.value;
+
+            const month =
+                monthSelect.value;
+
+
+            const filteredRaces = races
+                .filter(race => {
+
+                    const raceName =
+                        String(race.name || "").toLowerCase();
+
+                    const matchesKeyword =
+                        !keyword ||
+                        raceName.includes(keyword);
+
+                    const matchesRegion =
+                        !region ||
+                        race.region === region;
+
+                    const matchesDistance =
+                        !distance ||
+                        (
+                            Array.isArray(race.distances) &&
+                            race.distances.includes(distance)
+                        );
+
+                    const matchesMonth =
+                        !month ||
+                        String(race.date || "").substring(5, 7) === month;
+
+                    return (
+                        matchesKeyword &&
+                        matchesRegion &&
+                        matchesDistance &&
+                        matchesMonth
+                    );
+                })
+                .sort((a, b) => {
+
+                    return String(a.date || "")
+                        .localeCompare(String(b.date || ""));
+
+                });
+
+
+            resultInfo.textContent =
+                `총 ${filteredRaces.length}개의 대회가 있습니다.`;
+
+
+            if (filteredRaces.length === 0) {
+
+                raceList.innerHTML = `
+                    <div class="empty">
+                        <h3>검색 결과가 없습니다.</h3>
+                        <p>검색 조건을 변경해보세요.</p>
+                    </div>
+                `;
+
+            } else {
+
+                raceList.innerHTML =
+                    filteredRaces
+                        .map(createRaceCard)
+                        .join("");
+
+            }
+        }
+
+
+        searchBtn.addEventListener(
+            "click",
+            searchRaces
+        );
+
+
+        keywordInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+                    searchRaces();
+                }
+
+            }
+        );
+
+
+        resetBtn.addEventListener(
+            "click",
+            function() {
+
+                keywordInput.value = "";
+                regionSelect.value = "";
+                distanceSelect.value = "";
+                monthSelect.value = "";
+
+                searchRaces();
+
+            }
+        );
+
+
+        searchRaces();
+
+    }
+
+</script>
+
+</body>
+</html>
