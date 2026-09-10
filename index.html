@@ -5,17 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>어디런 - 전국 마라톤 대회</title>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BDF1JVFN5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-9BDF1JVFN5');
-    </script>
+    <title>여기런 - 전국 마라톤 대회</title>
 
     <style>
         * {
@@ -222,7 +212,7 @@
 
 <header>
     <div class="inner">
-        <h1>🏃 어디런</h1>
+        <h1>🏃 여기런</h1>
         <p>전국 마라톤 대회를 한눈에 찾아보세요</p>
     </div>
 </header>
@@ -298,7 +288,6 @@
 
 <script>
 
-    // races.js가 정상적으로 불러와졌는지 확인
     if (!Array.isArray(races)) {
 
         document.getElementById("raceList").innerHTML = `
@@ -322,7 +311,6 @@
         const resultInfo = document.getElementById("resultInfo");
 
 
-        // 대회 상태에 따른 CSS 클래스
         function getStatusClass(status) {
 
             if (status === "접수 중") {
@@ -337,7 +325,6 @@
         }
 
 
-        // 대회 카드 하나 만들기
         function createRaceCard(race) {
 
             const distanceHTML = race.distances
@@ -382,7 +369,6 @@
         }
 
 
-        // 검색 실행
         function searchRaces() {
 
             const keyword = keywordInput.value.trim().toLowerCase();
@@ -393,7 +379,6 @@
 
             const results = races.filter(race => {
 
-                // 대회명 검색
                 const keywordMatch =
                     !keyword ||
                     String(race.name || "")
@@ -401,13 +386,11 @@
                         .includes(keyword);
 
 
-                // 지역 검색
                 const regionMatch =
                     !region ||
                     race.region === region;
 
 
-                // 거리 검색
                 const distanceMatch =
                     !distance ||
                     (
@@ -416,7 +399,6 @@
                     );
 
 
-                // 월 검색
                 const monthMatch =
                     !month ||
                     String(race.date || "").substring(5, 7) === month;
@@ -432,7 +414,6 @@
             });
 
 
-            // 날짜순 정렬
             results.sort((a, b) => {
 
                 return String(a.date).localeCompare(String(b.date));
@@ -440,12 +421,10 @@
             });
 
 
-            // 결과 숫자
             resultInfo.textContent =
                 `🎯 ${results.length}개의 대회를 찾았습니다.`;
 
 
-            // 결과 표시
             if (results.length === 0) {
 
                 raceList.innerHTML = `
@@ -464,11 +443,9 @@
         }
 
 
-        // 검색 버튼
         searchBtn.addEventListener("click", searchRaces);
 
 
-        // 엔터키로 검색
         keywordInput.addEventListener("keydown", function(event) {
 
             if (event.key === "Enter") {
@@ -480,13 +457,11 @@
         });
 
 
-        // 필터 변경 시 바로 검색
         regionSelect.addEventListener("change", searchRaces);
         distanceSelect.addEventListener("change", searchRaces);
         monthSelect.addEventListener("change", searchRaces);
 
 
-        // 초기화
         resetBtn.addEventListener("click", function() {
 
             keywordInput.value = "";
@@ -499,7 +474,6 @@
         });
 
 
-        // 처음 페이지 열었을 때 전체 대회 표시
         searchRaces();
 
     }
