@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,10 +25,7 @@
         content="2026년 전국 마라톤 대회 일정을 한눈에 확인하세요. 서울, 경기, 대구, 부산 등 지역별 마라톤과 5km, 10km, 하프, 풀코스 대회를 쉽게 찾아볼 수 있습니다."
     >
 
-    <meta
-        name="robots"
-        content="index, follow"
-    >
+    <meta name="robots" content="index, follow">
 
     <link
         rel="canonical"
@@ -35,55 +33,91 @@
     >
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            font-family: Arial, "Noto Sans KR", sans-serif;
-            background: #f5f7fb;
-            color: #222;
+            font-family:
+                Arial,
+                "Noto Sans KR",
+                sans-serif;
+            background: #f4f6f8;
+            color: #17202a;
         }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             background: #111827;
             color: white;
-            padding: 28px 20px;
         }
 
-        header .inner {
+        .header-inner {
             max-width: 1100px;
             margin: auto;
+            padding: 34px 20px 38px;
         }
 
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 32px;
+        .logo {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
 
-        header p {
-            margin: 0;
-            color: #d1d5db;
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 16px;
         }
+
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
             max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 28px 20px 60px;
         }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            margin-bottom: 22px;
+        }
+
+        .intro h2 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+        .intro p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
 
         .search-box {
             background: white;
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
         }
 
-        .search-box h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
+        .search-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .search-grid {
@@ -95,69 +129,140 @@
         input,
         select,
         button {
-            width: 100%;
             height: 46px;
-            border-radius: 8px;
+            border-radius: 9px;
             font-size: 15px;
         }
 
         input,
         select {
-            border: 1px solid #d1d5db;
+            width: 100%;
+            border: 1px solid #d7dce2;
             padding: 0 12px;
             background: white;
+            color: #222;
         }
 
-        button {
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .search-btn {
             border: none;
             background: #2563eb;
             color: white;
-            font-weight: bold;
             padding: 0 20px;
+            font-weight: 700;
             cursor: pointer;
         }
 
-        button:hover {
+        .search-btn:hover {
             background: #1d4ed8;
         }
 
-        .reset-btn {
-            margin-top: 10px;
-            width: auto;
-            background: #6b7280;
+        /* =========================
+           QUICK FILTER
+        ========================= */
+
+        .quick-filter {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
         }
 
-        .reset-btn:hover {
-            background: #4b5563;
+        .quick-btn {
+            width: auto;
+            height: 38px;
+            padding: 0 14px;
+            border: 1px solid #d7dce2;
+            background: white;
+            color: #475569;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .quick-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .quick-btn.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+
+        .reset-btn {
+            margin-top: 12px;
+            width: auto;
+            height: 38px;
+            padding: 0 14px;
+            border: none;
+            background: #e5e7eb;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        /* =========================
+           RESULT INFO
+        ========================= */
+
+        .result-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0 14px;
         }
 
         .result-info {
-            margin-bottom: 16px;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 700;
         }
+
+        .result-info strong {
+            color: #2563eb;
+        }
+
+        /* =========================
+           RACE LIST
+        ========================= */
 
         .race-list {
             display: grid;
-            gap: 16px;
+            gap: 15px;
         }
 
         .race-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 22px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .race-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
         }
 
         .status {
             display: inline-block;
             padding: 5px 10px;
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 700;
             background: #e5e7eb;
-            color: #374151;
+            color: #4b5563;
         }
 
         .status.open {
@@ -170,16 +275,24 @@
             color: #92400e;
         }
 
+        .race-date {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
         .race-card h3 {
-            margin: 0 0 12px;
+            margin: 0 0 13px;
             font-size: 21px;
+            line-height: 1.4;
         }
 
         .badges {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .badge {
@@ -187,13 +300,13 @@
             color: #1d4ed8;
             padding: 5px 9px;
             border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 700;
         }
 
         .info {
-            line-height: 1.8;
-            color: #4b5563;
+            line-height: 1.9;
+            color: #64748b;
             font-size: 14px;
         }
 
@@ -202,22 +315,43 @@
             margin-top: 14px;
             color: #2563eb;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 14px;
         }
 
         .home-link:hover {
             text-decoration: underline;
         }
 
+        /* =========================
+           EMPTY
+        ========================= */
+
         .empty {
             background: white;
-            padding: 50px 20px;
+            padding: 55px 20px;
             text-align: center;
-            border-radius: 16px;
-            color: #6b7280;
+            border-radius: 18px;
+            color: #64748b;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 800px) {
+
             .search-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -225,9 +359,31 @@
             .search-grid input {
                 grid-column: 1 / -1;
             }
+
+            .search-btn {
+                grid-column: 1 / -1;
+            }
+
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 550px) {
+
+            .header-inner {
+                padding: 27px 18px 30px;
+            }
+
+            .logo {
+                font-size: 29px;
+            }
+
+            main {
+                padding: 23px 15px 45px;
+            }
+
+            .search-box {
+                padding: 18px;
+            }
+
             .search-grid {
                 grid-template-columns: 1fr;
             }
@@ -236,38 +392,88 @@
                 grid-column: auto;
             }
 
-            .reset-btn {
-                width: 100%;
+            .search-btn {
+                grid-column: auto;
             }
+
+            .card-top {
+                display: block;
+            }
+
+            .status {
+                margin-bottom: 10px;
+            }
+
+            .race-card {
+                padding: 18px;
+            }
+
+            .race-card h3 {
+                font-size: 19px;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
 <header>
-    <div class="inner">
-        <h1>🏃 여기런</h1>
-        <p>전국 마라톤 대회를 한눈에 찾아보세요</p>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            🏃 여기런
+        </div>
+
+        <div class="subtitle">
+            전국 마라톤 대회를 한눈에 찾아보세요
+        </div>
+
     </div>
+
 </header>
+
 
 <main>
 
+    <section class="intro">
+
+        <h2>
+            2026 전국 마라톤 일정
+        </h2>
+
+        <p>
+            지역, 거리, 월별로 원하는 마라톤 대회를 쉽게 찾아보세요.
+        </p>
+
+    </section>
+
+
     <section class="search-box">
 
-        <h2>🔎 마라톤 대회 검색</h2>
+        <div class="search-title">
+            🔎 마라톤 대회 검색
+        </div>
+
 
         <div class="search-grid">
 
             <input
                 type="text"
                 id="keyword"
-                placeholder="대회 이름을 검색하세요"
+                placeholder="대회명, 지역, 장소, 거리 검색"
             >
 
+
             <select id="region">
-                <option value="">전체 지역</option>
+
+                <option value="">
+                    전체 지역
+                </option>
+
                 <option value="서울">서울</option>
                 <option value="경기">경기</option>
                 <option value="인천">인천</option>
@@ -285,66 +491,222 @@
                 <option value="대구">대구</option>
                 <option value="경북">경북</option>
                 <option value="제주">제주</option>
+
             </select>
 
+
             <select id="distance">
-                <option value="">전체 거리</option>
+
+                <option value="">
+                    전체 거리
+                </option>
+
                 <option value="5km">5km</option>
                 <option value="10km">10km</option>
                 <option value="하프">하프</option>
                 <option value="풀코스">풀코스</option>
+
             </select>
 
+
             <select id="month">
-                <option value="">전체 월</option>
+
+                <option value="">
+                    전체 월
+                </option>
+
                 <option value="09">9월</option>
                 <option value="10">10월</option>
                 <option value="11">11월</option>
                 <option value="12">12월</option>
+
             </select>
 
-            <button id="searchBtn">검색</button>
+
+            <button
+                class="search-btn"
+                id="searchBtn"
+            >
+                검색
+            </button>
 
         </div>
 
-        <button class="reset-btn" id="resetBtn">
+
+        <div class="quick-filter">
+
+            <button
+                class="quick-btn"
+                id="openBtn"
+            >
+                🟢 접수 중
+            </button>
+
+            <button
+                class="quick-btn"
+                id="thisMonthBtn"
+            >
+                📅 이번 달
+            </button>
+
+        </div>
+
+
+        <button
+            class="reset-btn"
+            id="resetBtn"
+        >
             초기화
         </button>
 
     </section>
 
-    <div class="result-info" id="resultInfo"></div>
 
-    <section class="race-list" id="raceList"></section>
+    <div class="result-bar">
+
+        <div
+            class="result-info"
+            id="resultInfo"
+        >
+        </div>
+
+    </div>
+
+
+    <section
+        class="race-list"
+        id="raceList"
+    >
+    </section>
 
 </main>
 
+
+<footer>
+    © 2026 여기런 · 전국 마라톤 대회 정보
+</footer>
+
+
 <script src="races.js"></script>
+
 
 <script>
 
-    if (typeof races === "undefined" || !Array.isArray(races)) {
+    if (
+        typeof races === "undefined" ||
+        !Array.isArray(races)
+    ) {
 
         document.getElementById("raceList").innerHTML = `
+
             <div class="empty">
-                <h3>대회 데이터를 불러오지 못했습니다.</h3>
-                <p>races.js 파일이 index.html과 같은 폴더에 있는지 확인해주세요.</p>
+
+                <h3>
+                    대회 데이터를 불러오지 못했습니다.
+                </h3>
+
+                <p>
+                    races.js 파일이 index.html과 같은 폴더에 있는지 확인해주세요.
+                </p>
+
             </div>
+
         `;
 
     } else {
 
-        const keywordInput = document.getElementById("keyword");
-        const regionSelect = document.getElementById("region");
-        const distanceSelect = document.getElementById("distance");
-        const monthSelect = document.getElementById("month");
 
-        const searchBtn = document.getElementById("searchBtn");
-        const resetBtn = document.getElementById("resetBtn");
+        const keywordInput =
+            document.getElementById("keyword");
 
-        const raceList = document.getElementById("raceList");
-        const resultInfo = document.getElementById("resultInfo");
+        const regionSelect =
+            document.getElementById("region");
 
+        const distanceSelect =
+            document.getElementById("distance");
+
+        const monthSelect =
+            document.getElementById("month");
+
+
+        const searchBtn =
+            document.getElementById("searchBtn");
+
+        const resetBtn =
+            document.getElementById("resetBtn");
+
+        const openBtn =
+            document.getElementById("openBtn");
+
+        const thisMonthBtn =
+            document.getElementById("thisMonthBtn");
+
+
+        const raceList =
+            document.getElementById("raceList");
+
+        const resultInfo =
+            document.getElementById("resultInfo");
+
+
+        let openOnly = false;
+
+
+        /* =========================
+           날짜 표시
+        ========================= */
+
+        function formatDate(dateString) {
+
+            if (!dateString) {
+                return "";
+            }
+
+            const parts =
+                dateString.split("-");
+
+            if (parts.length !== 3) {
+                return dateString;
+            }
+
+            const year =
+                Number(parts[0]);
+
+            const month =
+                Number(parts[1]);
+
+            const day =
+                Number(parts[2]);
+
+
+            const date =
+                new Date(
+                    year,
+                    month - 1,
+                    day
+                );
+
+
+            const weekdays =
+                [
+                    "일",
+                    "월",
+                    "화",
+                    "수",
+                    "목",
+                    "금",
+                    "토"
+                ];
+
+
+            return `${year}년 ${month}월 ${day}일 (${weekdays[date.getDay()]})`;
+
+        }
+
+
+        /* =========================
+           상태 스타일
+        ========================= */
 
         function getStatusClass(status) {
 
@@ -357,88 +719,184 @@
             }
 
             return "";
+
         }
 
 
+        /* =========================
+           카드 생성
+        ========================= */
+
         function createRaceCard(race) {
 
-            const distanceHTML = Array.isArray(race.distances)
+            const distanceHTML =
+                Array.isArray(race.distances)
+
                 ? race.distances
-                    .map(distance => `<span class="badge">${distance}</span>`)
+                    .map(
+                        distance =>
+                            `<span class="badge">${distance}</span>`
+                    )
                     .join("")
+
                 : "";
 
-            const statusClass = getStatusClass(race.status);
+
+            const statusClass =
+                getStatusClass(race.status);
+
 
             return `
+
                 <article class="race-card">
 
-                    <div class="status ${statusClass}">
-                        ${race.status || "상태 확인 필요"}
+                    <div class="card-top">
+
+                        <div>
+
+                            <div class="race-date">
+                                📅 ${formatDate(race.date)}
+                            </div>
+
+                            <h3>
+                                ${race.name}
+                            </h3>
+
+                        </div>
+
+
+                        <div
+                            class="status ${statusClass}"
+                        >
+                            ${race.status || "상태 확인 필요"}
+                        </div>
+
                     </div>
 
-                    <h3>${race.name}</h3>
 
                     <div class="badges">
+
                         ${distanceHTML}
+
                     </div>
 
+
                     <div class="info">
-                        📅 날짜 : ${race.date}<br>
+
                         📍 지역 : ${race.region}<br>
+
                         🏟 장소 : ${race.place}<br>
-                        💰 참가비 : ${race.price || "공식 홈페이지 확인"}<br>
-                        📝 접수기간 : ${race.period || "공식 홈페이지 확인"}
+
+                        💰 참가비 :
+                        ${race.price || "공식 홈페이지 확인"}<br>
+
+                        📝 접수기간 :
+                        ${race.period || "공식 홈페이지 확인"}
+
                     </div>
+
 
                     ${
                         race.url
-                        ? `<a
+
+                        ?
+
+                        `<a
                             class="home-link"
                             href="${race.url}"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             공식 홈페이지 →
-                           </a>`
-                        : `<span class="home-link">
+                        </a>`
+
+                        :
+
+                        `<span class="home-link">
                             공식 홈페이지 확인
-                           </span>`
+                        </span>`
                     }
 
                 </article>
+
             `;
+
         }
 
+
+        /* =========================
+           검색
+        ========================= */
 
         function searchRaces() {
 
             const keyword =
-                keywordInput.value.trim().toLowerCase();
+                keywordInput.value
+                    .trim()
+                    .toLowerCase();
+
 
             const region =
                 regionSelect.value;
 
+
             const distance =
                 distanceSelect.value;
+
 
             const month =
                 monthSelect.value;
 
 
-            const filteredRaces = races
+            const filteredRaces =
+                races
+
                 .filter(race => {
 
                     const raceName =
-                        String(race.name || "").toLowerCase();
+                        String(
+                            race.name || ""
+                        ).toLowerCase();
+
+
+                    const raceRegion =
+                        String(
+                            race.region || ""
+                        ).toLowerCase();
+
+
+                    const racePlace =
+                        String(
+                            race.place || ""
+                        ).toLowerCase();
+
+
+                    const raceDistances =
+                        Array.isArray(race.distances)
+                        ? race.distances
+                            .join(" ")
+                            .toLowerCase()
+                        : "";
+
+
+                    const searchText =
+                        `
+                        ${raceName}
+                        ${raceRegion}
+                        ${racePlace}
+                        ${raceDistances}
+                        `.toLowerCase();
+
 
                     const matchesKeyword =
                         !keyword ||
-                        raceName.includes(keyword);
+                        searchText.includes(keyword);
+
 
                     const matchesRegion =
                         !region ||
                         race.region === region;
+
 
                     const matchesDistance =
                         !distance ||
@@ -447,36 +905,62 @@
                             race.distances.includes(distance)
                         );
 
+
                     const matchesMonth =
                         !month ||
-                        String(race.date || "").substring(5, 7) === month;
+                        String(
+                            race.date || ""
+                        ).substring(5, 7) === month;
+
+
+                    const matchesOpen =
+                        !openOnly ||
+                        race.status === "접수 중";
+
 
                     return (
+
                         matchesKeyword &&
                         matchesRegion &&
                         matchesDistance &&
-                        matchesMonth
+                        matchesMonth &&
+                        matchesOpen
+
                     );
+
                 })
-                .sort((a, b) => {
 
-                    return String(a.date || "")
-                        .localeCompare(String(b.date || ""));
-
-                });
-
-
-            resultInfo.textContent =
-                `총 ${filteredRaces.length}개의 대회가 있습니다.`;
+                .sort(
+                    (a, b) =>
+                        String(a.date || "")
+                            .localeCompare(
+                                String(b.date || "")
+                            )
+                );
 
 
-            if (filteredRaces.length === 0) {
+            resultInfo.innerHTML =
+                `총 <strong>${filteredRaces.length}</strong>개의 대회`;
+
+
+            if (
+                filteredRaces.length === 0
+            ) {
 
                 raceList.innerHTML = `
+
                     <div class="empty">
-                        <h3>검색 결과가 없습니다.</h3>
-                        <p>검색 조건을 변경해보세요.</p>
+
+                        <h3>
+                            검색 결과가 없습니다.
+                        </h3>
+
+                        <p>
+                            검색 조건을 변경해보세요.
+                        </p>
+
                     </div>
+
                 `;
 
             } else {
@@ -487,8 +971,13 @@
                         .join("");
 
             }
+
         }
 
+
+        /* =========================
+           검색 버튼
+        ========================= */
 
         searchBtn.addEventListener(
             "click",
@@ -501,27 +990,99 @@
             function(event) {
 
                 if (event.key === "Enter") {
+
                     searchRaces();
+
                 }
 
             }
         );
 
 
-        resetBtn.addEventListener(
+        /* =========================
+           접수 중
+        ========================= */
+
+        openBtn.addEventListener(
             "click",
             function() {
 
-                keywordInput.value = "";
-                regionSelect.value = "";
-                distanceSelect.value = "";
-                monthSelect.value = "";
+                openOnly =
+                    !openOnly;
+
+
+                openBtn.classList.toggle(
+                    "active",
+                    openOnly
+                );
+
 
                 searchRaces();
 
             }
         );
 
+
+        /* =========================
+           이번 달
+        ========================= */
+
+        thisMonthBtn.addEventListener(
+            "click",
+            function() {
+
+                const today =
+                    new Date();
+
+
+                const month =
+                    String(
+                        today.getMonth() + 1
+                    ).padStart(2, "0");
+
+
+                monthSelect.value =
+                    month;
+
+
+                searchRaces();
+
+            }
+        );
+
+
+        /* =========================
+           초기화
+        ========================= */
+
+        resetBtn.addEventListener(
+            "click",
+            function() {
+
+                keywordInput.value = "";
+
+                regionSelect.value = "";
+
+                distanceSelect.value = "";
+
+                monthSelect.value = "";
+
+                openOnly = false;
+
+                openBtn.classList.remove(
+                    "active"
+                );
+
+
+                searchRaces();
+
+            }
+        );
+
+
+        /* =========================
+           최초 실행
+        ========================= */
 
         searchRaces();
 
@@ -531,3 +1092,4 @@
 
 </body>
 </html>
+```
