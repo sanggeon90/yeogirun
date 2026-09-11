@@ -336,7 +336,7 @@
         }
 
         /* =========================
-           상세보기 버튼
+           상세보기
         ========================= */
 
         .detail-btn {
@@ -354,10 +354,6 @@
         .detail-btn:hover {
             background: #e2e8f0;
         }
-
-        /* =========================
-           상세정보
-        ========================= */
 
         .detail-box {
             display: none;
@@ -542,6 +538,7 @@
 
 </head>
 
+
 <body>
 
 <header>
@@ -576,7 +573,9 @@
     </section>
 
 
-    <!-- 통계 -->
+    <!-- =========================
+         통계
+    ========================= -->
 
     <section class="stats">
 
@@ -630,13 +629,16 @@
     </section>
 
 
-    <!-- 검색 -->
+    <!-- =========================
+         검색
+    ========================= -->
 
     <section class="search-box">
 
         <div class="search-title">
             🔎 마라톤 대회 검색
         </div>
+
 
         <div class="search-grid">
 
@@ -646,47 +648,42 @@
                 placeholder="대회명, 지역, 장소, 거리 검색"
             >
 
+
+            <!-- 지역 -->
             <select id="region">
 
-                <option value="">전체 지역</option>
-
-                <option value="서울">서울</option>
-                <option value="경기">경기</option>
-                <option value="인천">인천</option>
-                <option value="강원">강원</option>
-                <option value="대전">대전</option>
-                <option value="세종">세종</option>
-                <option value="충북">충북</option>
-                <option value="충남">충남</option>
-                <option value="광주">광주</option>
-                <option value="전북">전북</option>
-                <option value="전남">전남</option>
-                <option value="부산">부산</option>
-                <option value="울산">울산</option>
-                <option value="경남">경남</option>
-                <option value="대구">대구</option>
-                <option value="경북">경북</option>
-                <option value="제주">제주</option>
+                <option value="">
+                    전체 지역
+                </option>
 
             </select>
 
 
+            <!-- 거리 -->
             <select id="distance">
 
-                <option value="">전체 거리</option>
-
-                <option value="5km">5km</option>
-                <option value="10km">10km</option>
-                <option value="하프">하프</option>
-                <option value="풀코스">풀코스</option>
+                <option value="">
+                    전체 거리
+                </option>
 
             </select>
 
 
+            <!-- 월 -->
             <select id="month">
 
-                <option value="">전체 월</option>
+                <option value="">
+                    전체 월
+                </option>
 
+                <option value="01">1월</option>
+                <option value="02">2월</option>
+                <option value="03">3월</option>
+                <option value="04">4월</option>
+                <option value="05">5월</option>
+                <option value="06">6월</option>
+                <option value="07">7월</option>
+                <option value="08">8월</option>
                 <option value="09">9월</option>
                 <option value="10">10월</option>
                 <option value="11">11월</option>
@@ -713,6 +710,7 @@
             >
                 🟢 접수 중
             </button>
+
 
             <button
                 class="quick-btn"
@@ -764,6 +762,10 @@
 
 <script>
 
+    /* =========================
+       데이터 확인
+    ========================= */
+
     if (
         typeof races === "undefined" ||
         !Array.isArray(races)
@@ -787,6 +789,10 @@
 
     } else {
 
+
+        /* =========================
+           요소
+        ========================= */
 
         const keywordInput =
             document.getElementById("keyword");
@@ -832,6 +838,166 @@
 
 
         /* =========================
+           지역 자동 생성
+        ========================= */
+
+        function createRegionOptions() {
+
+            const regions =
+                [
+                    ...new Set(
+                        races
+                            .map(
+                                race =>
+                                    race.region
+                            )
+                            .filter(
+                                region =>
+                                    region &&
+                                    String(region).trim()
+                            )
+                    )
+                ]
+                .sort(
+                    (a, b) =>
+                        String(a)
+                            .localeCompare(
+                                String(b),
+                                "ko"
+                            )
+                );
+
+
+            regions.forEach(
+                region => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+                    option.value =
+                        region;
+
+                    option.textContent =
+                        region;
+
+                    regionSelect.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           거리 자동 생성
+        ========================= */
+
+        function createDistanceOptions() {
+
+            const distances =
+                [
+                    ...new Set(
+                        races
+                            .flatMap(
+                                race =>
+                                    Array.isArray(
+                                        race.distances
+                                    )
+                                    ? race.distances
+                                    : []
+                            )
+                            .filter(
+                                distance =>
+                                    distance &&
+                                    String(distance).trim()
+                            )
+                    )
+                ];
+
+
+            /*
+             * 일반적으로 많이 쓰는 거리 순서
+             */
+
+            const preferredOrder = [
+                "5km",
+                "10km",
+                "15km",
+                "20km",
+                "하프",
+                "풀코스"
+            ];
+
+
+            distances.sort(
+                (a, b) => {
+
+                    const aIndex =
+                        preferredOrder.indexOf(a);
+
+                    const bIndex =
+                        preferredOrder.indexOf(b);
+
+
+                    if (
+                        aIndex !== -1 &&
+                        bIndex !== -1
+                    ) {
+
+                        return aIndex - bIndex;
+
+                    }
+
+
+                    if (aIndex !== -1) {
+                        return -1;
+                    }
+
+
+                    if (bIndex !== -1) {
+                        return 1;
+                    }
+
+
+                    return String(a)
+                        .localeCompare(
+                            String(b),
+                            "ko"
+                        );
+
+                }
+            );
+
+
+            distances.forEach(
+                distance => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+                    option.value =
+                        distance;
+
+                    option.textContent =
+                        distance;
+
+                    distanceSelect.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
            통계
         ========================= */
 
@@ -839,6 +1005,7 @@
 
             const today =
                 new Date();
+
 
             const currentMonth =
                 String(
@@ -879,12 +1046,15 @@
                 return "";
             }
 
+
             const parts =
                 dateString.split("-");
+
 
             if (parts.length !== 3) {
                 return dateString;
             }
+
 
             const year =
                 Number(parts[0]);
@@ -895,12 +1065,14 @@
             const day =
                 Number(parts[2]);
 
+
             const date =
                 new Date(
                     year,
                     month - 1,
                     day
                 );
+
 
             const weekdays = [
                 "일",
@@ -911,6 +1083,7 @@
                 "금",
                 "토"
             ];
+
 
             return `${year}년 ${month}월 ${day}일 (${weekdays[date.getDay()]})`;
 
@@ -927,9 +1100,11 @@
                 return "open";
             }
 
+
             if (status === "접수 예정") {
                 return "soon";
             }
+
 
             return "";
 
@@ -937,14 +1112,17 @@
 
 
         /* =========================
-           거리
+           거리 뱃지
         ========================= */
 
-        function createDistanceHTML(distances) {
+        function createDistanceHTML(
+            distances
+        ) {
 
             if (!Array.isArray(distances)) {
                 return "";
             }
+
 
             return distances
                 .map(
@@ -965,12 +1143,16 @@
             const detail =
                 button.nextElementSibling;
 
+
             if (!detail) {
                 return;
             }
 
+
             const isOpen =
-                detail.classList.toggle("show");
+                detail.classList.toggle(
+                    "show"
+                );
 
 
             if (isOpen) {
@@ -1038,6 +1220,7 @@
                             <div class="race-date">
                                 📅 ${formatDate(race.date)}
                             </div>
+
 
                             <h3>
                                 ${race.name}
@@ -1145,11 +1328,23 @@
                                 </span>
 
                                 <span class="detail-value">
+
                                     ${
-                                        Array.isArray(race.distances)
-                                        ? race.distances.join(" · ")
-                                        : "정보 없음"
+                                        Array.isArray(
+                                            race.distances
+                                        )
+
+                                        ?
+
+                                        race.distances.join(
+                                            " · "
+                                        )
+
+                                        :
+
+                                        "정보 없음"
                                     }
+
                                 </span>
 
                             </div>
@@ -1220,88 +1415,109 @@
 
             const filteredRaces =
                 races
-                .filter(race => {
+                .filter(
+                    race => {
 
-                    const raceName =
-                        String(
-                            race.name || ""
-                        ).toLowerCase();
-
-
-                    const raceRegion =
-                        String(
-                            race.region || ""
-                        ).toLowerCase();
+                        const raceName =
+                            String(
+                                race.name || ""
+                            ).toLowerCase();
 
 
-                    const racePlace =
-                        String(
-                            race.place || ""
-                        ).toLowerCase();
+                        const raceRegion =
+                            String(
+                                race.region || ""
+                            ).toLowerCase();
 
 
-                    const raceDistances =
-                        Array.isArray(race.distances)
-                        ? race.distances
-                            .join(" ")
-                            .toLowerCase()
-                        : "";
+                        const racePlace =
+                            String(
+                                race.place || ""
+                            ).toLowerCase();
 
 
-                    const searchText = `
-                        ${raceName}
-                        ${raceRegion}
-                        ${racePlace}
-                        ${raceDistances}
-                    `.toLowerCase();
+                        const raceDistances =
+                            Array.isArray(
+                                race.distances
+                            )
+
+                            ?
+
+                            race.distances
+                                .join(" ")
+                                .toLowerCase()
+
+                            :
+
+                            "";
 
 
-                    const matchesKeyword =
-                        !keyword ||
-                        searchText.includes(keyword);
+                        const searchText = `
+                            ${raceName}
+                            ${raceRegion}
+                            ${racePlace}
+                            ${raceDistances}
+                        `.toLowerCase();
 
 
-                    const matchesRegion =
-                        !region ||
-                        race.region === region;
+                        const matchesKeyword =
+                            !keyword ||
+                            searchText.includes(
+                                keyword
+                            );
 
 
-                    const matchesDistance =
-                        !distance ||
-                        (
-                            Array.isArray(race.distances) &&
-                            race.distances.includes(distance)
+                        const matchesRegion =
+                            !region ||
+                            race.region === region;
+
+
+                        const matchesDistance =
+                            !distance ||
+                            (
+                                Array.isArray(
+                                    race.distances
+                                ) &&
+                                race.distances.includes(
+                                    distance
+                                )
+                            );
+
+
+                        const matchesMonth =
+                            !month ||
+                            String(
+                                race.date || ""
+                            ).substring(
+                                5,
+                                7
+                            ) === month;
+
+
+                        const matchesOpen =
+                            !openOnly ||
+                            race.status === "접수 중";
+
+
+                        return (
+                            matchesKeyword &&
+                            matchesRegion &&
+                            matchesDistance &&
+                            matchesMonth &&
+                            matchesOpen
                         );
 
-
-                    const matchesMonth =
-                        !month ||
-                        String(
-                            race.date || ""
-                        ).substring(5, 7)
-                        === month;
-
-
-                    const matchesOpen =
-                        !openOnly ||
-                        race.status === "접수 중";
-
-
-                    return (
-                        matchesKeyword &&
-                        matchesRegion &&
-                        matchesDistance &&
-                        matchesMonth &&
-                        matchesOpen
-                    );
-
-                })
+                    }
+                )
                 .sort(
                     (a, b) =>
-                        String(a.date || "")
-                            .localeCompare(
-                                String(b.date || "")
+                        String(
+                            a.date || ""
+                        ).localeCompare(
+                            String(
+                                b.date || ""
                             )
+                        )
                 );
 
 
@@ -1309,7 +1525,9 @@
                 `총 <strong>${filteredRaces.length}</strong>개의 대회`;
 
 
-            if (filteredRaces.length === 0) {
+            if (
+                filteredRaces.length === 0
+            ) {
 
                 raceList.innerHTML = `
 
@@ -1331,7 +1549,9 @@
 
                 raceList.innerHTML =
                     filteredRaces
-                        .map(createRaceCard)
+                        .map(
+                            createRaceCard
+                        )
                         .join("");
 
             }
@@ -1340,7 +1560,7 @@
 
 
         /* =========================
-           검색 버튼
+           검색
         ========================= */
 
         searchBtn.addEventListener(
@@ -1353,8 +1573,12 @@
             "keydown",
             function(event) {
 
-                if (event.key === "Enter") {
+                if (
+                    event.key === "Enter"
+                ) {
+
                     searchRaces();
+
                 }
 
             }
@@ -1372,10 +1596,12 @@
                 openOnly =
                     !openOnly;
 
+
                 openBtn.classList.toggle(
                     "active",
                     openOnly
                 );
+
 
                 searchRaces();
 
@@ -1398,7 +1624,10 @@
                 const month =
                     String(
                         today.getMonth() + 1
-                    ).padStart(2, "0");
+                    ).padStart(
+                        2,
+                        "0"
+                    );
 
 
                 monthSelect.value =
@@ -1429,9 +1658,11 @@
 
                 openOnly = false;
 
+
                 openBtn.classList.remove(
                     "active"
                 );
+
 
                 searchRaces();
 
@@ -1440,8 +1671,12 @@
 
 
         /* =========================
-           시작
+           실행
         ========================= */
+
+        createRegionOptions();
+
+        createDistanceOptions();
 
         updateStats();
 
