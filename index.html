@@ -2477,7 +2477,58 @@ const races = [
     }
 
 ];
+// =========================
+// Google Event 구조화 데이터
+// =========================
 
+function addEventStructuredData() {
+
+    const events = races
+        .filter(race => race.name && race.date)
+        .map(race => {
+
+            const event = {
+                "@type": "Event",
+                "name": race.name,
+                "startDate": race.date,
+                "location": {
+                    "@type": "Place",
+                    "name": race.place || race.region || "대한민국",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": race.region || "대한민국",
+                        "addressCountry": "KR"
+                    }
+                },
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "organizer": {
+                    "@type": "Organization",
+                    "name": "여기런"
+                }
+            };
+
+            if (race.url) {
+                event.url = race.url;
+            }
+
+            return event;
+        });
+
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@graph": events
+    };
+
+    const script = document.createElement("script");
+
+    script.type = "application/ld+json";
+
+    script.textContent =
+        JSON.stringify(structuredData);
+
+    document.head.appendChild(script);
+}
 
 /* =========================================================
    현재 상태
