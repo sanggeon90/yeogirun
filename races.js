@@ -1671,5 +1671,149 @@ const races = [
         period: "선착순",
         url: ""
     }
+{
+        name: "런텐 13차 레이스 JUST RUN10 대전",
+        date: "2026-11-07",
+        region: "대전",
+        place: "엑스포다리 인근",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "10km 50,000원 / 5km 45,000원",
+        period: "2026-09-02 ~ 2026-10-10",
+        url: ""
+    },
 
+    {
+        name: "남한산성트레일",
+        date: "2026-11-07",
+        region: "경기",
+        place: "산성로타리",
+        distances: ["13km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 문경 레전드 트레일 백두대간",
+        date: "2026-11-07",
+        region: "경북",
+        place: "문경새재도립공원 야외공연장",
+        distances: ["50km", "34km", "21km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "접수 마감",
+        url: ""
+    },
+
+    {
+        name: "넥슨과 함께하는 2026 푸르메런",
+        date: "2026-11-07",
+        region: "서울",
+        place: "월드컵공원 평화광장",
+        distances: ["10km", "3km"],
+        status: "접수 마감",
+        price: "10km 50,000원 / 3km 20,000원",
+        period: "2026-08-26 ~ 마감",
+        url: "https://www.purmerun.com/"
+    },
+
+    {
+        name: "SaveRace 2026",
+        date: "2026-11-07",
+        region: "서울",
+        place: "여의도공원 문화의마당",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "50,000원",
+        period: "2026-09-07 ~ 2026-09-18",
+        url: "https://www.saverace.co.kr/"
+    },
+
+    {
+        name: "2026 포항마라톤챔피언십",
+        date: "2026-11-14",
+        region: "경북",
+        place: "영일대",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 GIVE RUN 부산",
+        date: "2026-11-21",
+        region: "부산",
+        place: "삼락생태공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 MBN 서울마라톤",
+        date: "2026-11-15",
+        region: "서울",
+        place: "서울 일원",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "접수 마감",
+        url: ""
+    },
+
+    {
+        name: "2026 가민런 코리아",
+        date: "2026-11-15",
+        region: "경기",
+        place: "고양종합운동장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "접수 마감",
+        url: ""
+    },
+
+    {
+        name: "제26회 순천 남승룡마라톤대회",
+        date: "2026-11-14",
+        region: "전남",
+        place: "순천 일원",
+        distances: ["풀코스", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+    {
+        name: "2026 제3회 감성런",
+        date: "2026-10-24",
+        region: "서울",
+        place: "서울 일원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "2026-06-18 ~ 2026-09-17",
+        url: ""
+    },
+
+    {
+        name: "2026 서울 펫림픽 & 런 위드 고",
+        date: "2026-10-24",
+        region: "서울",
+        place: "서울 일원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "선착순",
+        url: ""
+    },
+
+];
 ];
