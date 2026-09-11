@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sanggeon90.github.io/yeogirun/sitemap.xml
