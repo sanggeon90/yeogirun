@@ -1,39 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>2026 전국 마라톤 일정 | 여기런 - 서울·대구·부산 마라톤</title>
-
-    <!-- Google Search Console -->
-    <meta
-        name="google-site-verification"
-        content="LEsTVyMsowQ8OnpLgueL8lfJcountcc2eL7IpJ8_Irk"
-    >
-
-    <!-- Naver Search Advisor -->
-    <meta
-        name="naver-site-verification"
-        content="1bd3b49778f57add4ab3b7f746c7958e6cde1c33"
-    >
-
-    <!-- SEO -->
-    <meta
-        name="description"
-        content="2026년 전국 마라톤 대회 일정을 한눈에 확인하세요. 서울, 경기, 대구, 부산 등 지역별 마라톤과 5km, 10km, 하프, 풀코스 대회를 쉽게 찾아볼 수 있습니다."
-    >
-
-    <meta name="robots" content="index, follow">
-
-    <link
-        rel="canonical"
-        href="https://sanggeon90.github.io/yeogirun/"
-    >
+    <title>여기런 - 전국 러닝대회 일정</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -41,438 +13,421 @@
         body {
             margin: 0;
             font-family:
-                Arial,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
                 "Noto Sans KR",
+                Arial,
                 sans-serif;
-            background: #f5f7fa;
-            color: #17202a;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
         }
 
         header {
-            background: #111827;
-            color: white;
+            background: #ffffff;
+            border-bottom: 1px solid #e8ebf1;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
 
         .header-inner {
-            max-width: 1100px;
-            margin: auto;
-            padding: 32px 20px 34px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 7px;
-        }
-
-        .subtitle {
-            color: #cbd5e1;
-            font-size: 15px;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 28px 20px 60px;
-        }
-
-        .intro {
-            margin-bottom: 20px;
-        }
-
-        .intro h2 {
-            margin: 0 0 7px;
             font-size: 25px;
+            font-weight: 900;
+            color: #111827;
+            letter-spacing: -1px;
         }
 
-        .intro p {
+        .logo span {
+            color: #2563eb;
+        }
+
+        .header-text {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .hero {
+            padding: 52px 0 34px;
+            background:
+                linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #f8fafc 100%);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
             margin: 0;
             color: #64748b;
-            font-size: 14px;
+            font-size: 16px;
+            line-height: 1.7;
         }
-
-        /* =========================
-           통계
-        ========================= */
 
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 22px;
+            gap: 16px;
+            margin: 26px 0;
         }
 
         .stat-card {
-            background: white;
-            border-radius: 16px;
-            padding: 18px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.045);
-            border: 1px solid #eef0f2;
+            background: #fff;
+            border: 1px solid #e7eaf0;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
         }
 
-        .stat-title {
+        .stat-label {
             color: #64748b;
             font-size: 13px;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
         }
 
         .stat-number {
-            font-size: 28px;
-            font-weight: 800;
-            color: #17202a;
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
-        .stat-card.open .stat-number {
-            color: #16a34a;
-        }
-
-        .stat-card.month .stat-number {
-            color: #2563eb;
-        }
-
-        /* =========================
-           검색
-        ========================= */
-
-        .search-box {
-            background: white;
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-            margin-bottom: 22px;
-        }
-
-        .search-title {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 13px;
+        .search-section {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 22px;
+            margin: 24px 0;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
         }
 
         .search-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr auto;
-            gap: 9px;
+            gap: 10px;
         }
 
-        input,
-        select,
-        button {
-            height: 44px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        input,
-        select {
+        .input,
+        .select {
             width: 100%;
-            border: 1px solid #d7dce2;
-            padding: 0 11px;
-            background: white;
-            color: #222;
-        }
-
-        input:focus,
-        select:focus {
+            height: 46px;
+            border: 1px solid #d9dee8;
+            border-radius: 11px;
+            padding: 0 13px;
             outline: none;
-            border-color: #2563eb;
+            background: #fff;
+            color: #172033;
         }
 
-        .search-btn {
-            border: none;
-            background: #2563eb;
-            color: white;
+        .input:focus,
+        .select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-button {
+            height: 46px;
             padding: 0 20px;
-            font-weight: 700;
+            border: 0;
+            border-radius: 11px;
+            background: #2563eb;
+            color: #fff;
+            font-weight: 800;
             cursor: pointer;
         }
 
-        .search-btn:hover {
+        .search-button:hover {
             background: #1d4ed8;
         }
 
-        .quick-filter {
+        .quick-filters {
             display: flex;
-            gap: 7px;
             flex-wrap: wrap;
-            margin-top: 12px;
+            gap: 8px;
+            margin-top: 14px;
         }
 
-        .quick-btn {
-            width: auto;
-            height: 36px;
-            padding: 0 13px;
-            border: 1px solid #d7dce2;
-            background: white;
+        .quick-button {
+            border: 1px solid #d9dee8;
+            background: #fff;
             color: #475569;
+            border-radius: 999px;
+            padding: 8px 13px;
             cursor: pointer;
-            font-weight: 600;
-        }
-
-        .quick-btn:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        .quick-btn.active {
-            background: #2563eb;
-            border-color: #2563eb;
-            color: white;
-        }
-
-        .reset-btn {
-            width: auto;
-            height: 36px;
-            margin-top: 10px;
-            padding: 0 13px;
-            border: none;
-            background: #eef0f2;
-            color: #475569;
-            cursor: pointer;
-        }
-
-        /* =========================
-           결과
-        ========================= */
-
-        .result-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 24px 0 13px;
-        }
-
-        .result-info {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
         }
 
-        .result-info strong {
+        .quick-button.active {
+            background: #eff6ff;
             color: #2563eb;
+            border-color: #93c5fd;
+        }
+
+        .reset-button {
+            border: 1px solid #d9dee8;
+            background: #fff;
+            color: #475569;
+            border-radius: 11px;
+            padding: 0 15px;
+            height: 46px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .list-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 28px 0 14px;
+        }
+
+        .list-header h2 {
+            margin: 0;
+            font-size: 21px;
+            letter-spacing: -0.5px;
+        }
+
+        .result-count {
+            color: #64748b;
+            font-size: 14px;
         }
 
         .race-list {
             display: grid;
-            gap: 12px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding-bottom: 60px;
         }
 
-        /* =========================
-           대회 카드
-        ========================= */
-
         .race-card {
-            background: white;
-            border-radius: 16px;
-            padding: 18px 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.045);
-            border: 1px solid #eef0f2;
-            transition: box-shadow 0.2s;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 20px;
+            transition: 0.2s ease;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.035);
         }
 
         .race-card:hover {
-            box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
         }
 
-        .card-top {
+        .race-top {
             display: flex;
-            justify-content: space-between;
             align-items: flex-start;
-            gap: 15px;
+            justify-content: space-between;
+            gap: 12px;
         }
 
-        .race-date {
-            color: #2563eb;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .race-card h3 {
+        .race-name {
             margin: 0;
-            font-size: 19px;
+            font-size: 18px;
             line-height: 1.4;
+            letter-spacing: -0.5px;
         }
 
         .status {
             flex-shrink: 0;
-            display: inline-block;
-            padding: 5px 9px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            background: #e5e7eb;
-            color: #4b5563;
+            border-radius: 999px;
+            padding: 6px 9px;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
         }
 
         .status.open {
-            background: #dcfce7;
-            color: #166534;
+            background: #ecfdf5;
+            color: #047857;
         }
 
-        .status.soon {
-            background: #fef3c7;
-            color: #92400e;
+        .status.closed {
+            background: #f1f5f9;
+            color: #64748b;
         }
 
-        .badges {
+        .race-date {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .race-info {
+            margin-top: 12px;
+            display: grid;
+            gap: 7px;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .info-label {
+            display: inline-block;
+            min-width: 48px;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        .distance-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin: 11px 0 10px;
+            gap: 5px;
+            margin-top: 14px;
         }
 
-        .badge {
-            background: #eff6ff;
-            color: #1d4ed8;
-            padding: 4px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .info {
-            line-height: 1.75;
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        /* =========================
-           상세보기
-        ========================= */
-
-        .detail-btn {
-            margin-top: 13px;
-            border: none;
+        .distance-tag {
+            padding: 5px 8px;
+            border-radius: 7px;
             background: #f1f5f9;
-            color: #334155;
-            padding: 9px 13px;
-            height: auto;
-            cursor: pointer;
-            font-size: 13px;
+            color: #475569;
+            font-size: 11px;
             font-weight: 700;
         }
 
-        .detail-btn:hover {
-            background: #e2e8f0;
-        }
-
-        .detail-box {
+        .details {
             display: none;
             margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e5e7eb;
+            padding-top: 15px;
+            border-top: 1px solid #eef1f5;
         }
 
-        .detail-box.show {
+        .details.open {
             display: block;
         }
 
-        .detail-title {
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 9px;
-        }
-
-        .detail-item {
-            background: #f8fafc;
-            border-radius: 9px;
-            padding: 11px 12px;
-        }
-
-        .detail-label {
-            display: block;
-            color: #94a3b8;
-            font-size: 11px;
-            margin-bottom: 3px;
-        }
-
-        .detail-value {
-            color: #334155;
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 6px 0;
             font-size: 13px;
-            font-weight: 600;
         }
 
-        .home-link {
-            display: inline-block;
-            margin-top: 13px;
+        .details-row span:first-child {
+            color: #64748b;
+        }
+
+        .details-row span:last-child {
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .detail-button {
+            width: 100%;
+            margin-top: 14px;
+            height: 40px;
+            border: 1px solid #dbe3ef;
+            border-radius: 9px;
+            background: #fff;
+            color: #334155;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .official-link {
+            display: block;
+            margin-top: 9px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 9px;
             background: #2563eb;
             color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
             text-decoration: none;
-            font-weight: 700;
             font-size: 13px;
-        }
-
-        .home-link:hover {
-            background: #1d4ed8;
-        }
-
-        .home-link.disabled {
-            background: #e2e8f0;
-            color: #64748b;
+            font-weight: 800;
         }
 
         .empty {
-            background: white;
-            padding: 55px 20px;
+            grid-column: 1 / -1;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 60px 20px;
             text-align: center;
-            border-radius: 16px;
+        }
+
+        .empty h3 {
+            margin: 0 0 8px;
+        }
+
+        .empty p {
+            margin: 0;
             color: #64748b;
         }
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #94a3b8;
-            font-size: 12px;
+        .data-warning {
+            display: none;
+            margin: 12px 0;
+            padding: 12px 14px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+            border-radius: 10px;
+            font-size: 13px;
         }
 
-        /* =========================
-           모바일
-        ========================= */
+        footer {
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+            padding: 28px 0;
+            color: #94a3b8;
+            font-size: 12px;
+            text-align: center;
+        }
 
-        @media (max-width: 800px) {
-
+        @media (max-width: 900px) {
             .search-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
-            .search-grid input {
+            .search-grid .input {
                 grid-column: 1 / -1;
             }
 
-            .search-btn {
-                grid-column: 1 / -1;
+            .race-list {
+                grid-template-columns: 1fr;
             }
-
         }
 
-        @media (max-width: 550px) {
+        @media (max-width: 600px) {
+            .container {
+                width: min(100% - 22px, 1180px);
+            }
 
             .header-inner {
-                padding: 26px 17px 29px;
+                height: 62px;
             }
 
-            .logo {
-                font-size: 28px;
+            .header-text {
+                display: none;
             }
 
-            .subtitle {
-                font-size: 14px;
-            }
-
-            main {
-                padding: 22px 14px 45px;
-            }
-
-            .intro h2 {
-                font-size: 22px;
+            .hero {
+                padding: 36px 0 25px;
             }
 
             .stats {
@@ -480,1212 +435,2559 @@
             }
 
             .stat-card {
-                padding: 14px 10px;
-                text-align: center;
-            }
-
-            .stat-title {
-                font-size: 11px;
+                padding: 15px;
+                border-radius: 14px;
             }
 
             .stat-number {
-                font-size: 22px;
+                font-size: 23px;
             }
 
-            .search-box {
-                padding: 17px;
+            .stat-label {
+                font-size: 11px;
+            }
+
+            .search-section {
+                padding: 15px;
+                border-radius: 15px;
             }
 
             .search-grid {
                 grid-template-columns: 1fr;
             }
 
-            .search-grid input {
+            .search-grid .input {
                 grid-column: auto;
             }
 
-            .search-btn {
-                grid-column: auto;
-            }
-
-            .card-top {
-                display: block;
-            }
-
-            .status {
-                margin-top: 9px;
+            .search-button,
+            .reset-button {
+                width: 100%;
             }
 
             .race-card {
-                padding: 16px;
+                padding: 17px;
             }
 
-            .race-card h3 {
-                font-size: 18px;
+            .race-top {
+                flex-direction: column;
             }
 
-            .info {
-                font-size: 12.5px;
+            .status {
+                align-self: flex-start;
             }
-
-            .detail-grid {
-                grid-template-columns: 1fr;
-            }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
 <header>
-
-    <div class="header-inner">
-
-        <div class="logo">
-            🏃 여기런
-        </div>
-
-        <div class="subtitle">
-            전국 마라톤 대회를 한눈에 찾아보세요
-        </div>
-
+    <div class="container header-inner">
+        <div class="logo">여기<span>런</span></div>
+        <div class="header-text">전국 러닝대회 일정 한눈에 보기</div>
     </div>
-
 </header>
 
-
-<main>
-
-    <section class="intro">
-
-        <h2>
-            2026 전국 마라톤 일정
-        </h2>
-
+<section class="hero">
+    <div class="container">
+        <h1>전국 러닝대회,<br>여기서 찾아보세요.</h1>
         <p>
-            지역 · 거리 · 월별로 원하는 마라톤 대회를 빠르게 찾아보세요.
+            마라톤부터 트레일런까지<br>
+            전국에서 열리는 러닝대회를 쉽게 검색할 수 있습니다.
         </p>
+    </div>
+</section>
 
-    </section>
-
-
-    <!-- =========================
-         통계
-    ========================= -->
+<main class="container">
 
     <section class="stats">
+        <div class="stat-card">
+            <div class="stat-label">등록 대회</div>
+            <div class="stat-number" id="totalCount">0</div>
+        </div>
 
         <div class="stat-card">
-
-            <div class="stat-title">
-                🏃 전체 대회
-            </div>
-
-            <div
-                class="stat-number"
-                id="totalCount"
-            >
-                0
-            </div>
-
+            <div class="stat-label">현재 접수 중</div>
+            <div class="stat-number" id="openCount">0</div>
         </div>
 
-
-        <div class="stat-card open">
-
-            <div class="stat-title">
-                🟢 현재 접수 중
-            </div>
-
-            <div
-                class="stat-number"
-                id="openCount"
-            >
-                0
-            </div>
-
+        <div class="stat-card">
+            <div class="stat-label">이번 달 대회</div>
+            <div class="stat-number" id="monthCount">0</div>
         </div>
-
-
-        <div class="stat-card month">
-
-            <div class="stat-title">
-                📅 이번 달
-            </div>
-
-            <div
-                class="stat-number"
-                id="monthCount"
-            >
-                0
-            </div>
-
-        </div>
-
     </section>
 
+    <div class="data-warning" id="dataWarning"></div>
 
-    <!-- =========================
-         검색
-    ========================= -->
-
-    <section class="search-box">
-
-        <div class="search-title">
-            🔎 마라톤 대회 검색
-        </div>
-
+    <section class="search-section">
 
         <div class="search-grid">
 
             <input
                 type="text"
                 id="keyword"
-                placeholder="대회명, 지역, 장소, 거리 검색"
+                class="input"
+                placeholder="대회명, 지역, 장소 검색"
             >
 
-
-            <!-- 지역 -->
-            <select id="region">
-
-                <option value="">
-                    전체 지역
-                </option>
-
+            <select id="region" class="select">
+                <option value="">전체 지역</option>
             </select>
 
-
-            <!-- 거리 -->
-            <select id="distance">
-
-                <option value="">
-                    전체 거리
-                </option>
-
+            <select id="distance" class="select">
+                <option value="">전체 종목</option>
             </select>
 
-
-            <!-- 월 -->
-            <select id="month">
-
-                <option value="">
-                    전체 월
-                </option>
-
-                <option value="01">1월</option>
-                <option value="02">2월</option>
-                <option value="03">3월</option>
-                <option value="04">4월</option>
-                <option value="05">5월</option>
-                <option value="06">6월</option>
-                <option value="07">7월</option>
-                <option value="08">8월</option>
-                <option value="09">9월</option>
-                <option value="10">10월</option>
-                <option value="11">11월</option>
-                <option value="12">12월</option>
-
+            <select id="month" class="select">
+                <option value="">전체 월</option>
             </select>
 
-
-            <button
-                class="search-btn"
-                id="searchBtn"
-            >
+            <button class="search-button" onclick="searchRaces()">
                 검색
             </button>
 
         </div>
 
-
-        <div class="quick-filter">
+        <div class="quick-filters">
 
             <button
-                class="quick-btn"
-                id="openBtn"
+                class="quick-button"
+                id="openFilter"
+                onclick="toggleOpenFilter()"
             >
-                🟢 접수 중
+                접수 중만 보기
             </button>
 
+            <button
+                class="quick-button"
+                id="currentMonthFilter"
+                onclick="toggleCurrentMonthFilter()"
+            >
+                이번 달만 보기
+            </button>
 
             <button
-                class="quick-btn"
-                id="thisMonthBtn"
+                class="reset-button"
+                onclick="resetFilters()"
             >
-                📅 이번 달
+                초기화
             </button>
 
         </div>
-
-
-        <button
-            class="reset-btn"
-            id="resetBtn"
-        >
-            초기화
-        </button>
 
     </section>
 
-
-    <div class="result-bar">
-
-        <div
-            class="result-info"
-            id="resultInfo"
-        >
-        </div>
-
+    <div class="list-header">
+        <h2>러닝대회 일정</h2>
+        <div class="result-count" id="resultCount">0개</div>
     </div>
 
-
-    <section
-        class="race-list"
-        id="raceList"
-    >
-    </section>
+    <section class="race-list" id="raceList"></section>
 
 </main>
 
-
 <footer>
-    © 2026 여기런 · 전국 마라톤 대회 정보
+    <div class="container">
+        여기런 · 전국 러닝대회 일정 서비스
+    </div>
 </footer>
-
-
-<script src="races.js"></script>
 
 
 <script>
 
-    /* =========================
-       데이터 확인
-    ========================= */
+/* =========================================================
+   여기런 대회 데이터
+   ========================================================= */
 
-    if (
-        typeof races === "undefined" ||
-        !Array.isArray(races)
-    ) {
+const races = [
 
-        document.getElementById("raceList").innerHTML = `
+    // =========================
+    // 2026년 9월
+    // =========================
 
-            <div class="empty">
+    {
+        name: "제14회 설악산공룡능선 CLIMBATHON",
+        date: "2026-09-03",
+        region: "강원",
+        place: "설악산 한계령휴게소",
+        distances: ["27km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
 
-                <h3>
-                    대회 데이터를 불러오지 못했습니다.
-                </h3>
+    {
+        name: "2026 다이나핏 태백 트레일",
+        date: "2026-09-05",
+        region: "강원",
+        place: "태백 소원지 오토캠핑장",
+        distances: ["50K", "32K-T", "32K-U"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
 
-                <p>
-                    races.js 파일이 index.html과 같은 폴더에 있는지 확인해주세요.
-                </p>
+    {
+        name: "제12회 I LOVE 방송대 마라톤",
+        date: "2026-09-05",
+        region: "서울",
+        place: "상암동 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
 
-            </div>
+    {
+        name: "2026 Just Run10 세종",
+        date: "2026-09-05",
+        region: "세종",
+        place: "세종마루공원 밑 금강변",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
 
+    {
+        name: "제23회 철원DMZ국제평화마라톤",
+        date: "2026-09-05",
+        region: "강원",
+        place: "철원 고석정",
+        distances: ["풀", "하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제20회 순천만울트라마라톤",
+        date: "2026-09-05",
+        region: "전남",
+        place: "순천동천천변공원",
+        distances: ["100km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Vrun 2회",
+        date: "2026-09-05",
+        region: "서울",
+        place: "신정교하부육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 이일선마라톤",
+        date: "2026-09-05",
+        region: "경북",
+        place: "울릉도 나리분지",
+        distances: ["10km", "4.4km 걷기"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제23회 희망드림 새벽강변 국제마라톤",
+        date: "2026-09-06",
+        region: "서울",
+        place: "목동종합운동장",
+        distances: ["하프", "10km", "5km", "3km 가족런"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 KMA 청주마라톤",
+        date: "2026-09-06",
+        region: "충북",
+        place: "청주 무심천 체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제24회 청광종주 트레일러닝",
+        date: "2026-09-06",
+        region: "서울",
+        place: "양재동 화물터미널",
+        distances: ["26km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제11회 김대중평화마라톤",
+        date: "2026-09-06",
+        region: "서울",
+        place: "뚝섬 한강공원 수변무대",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 문경새재 트레일런",
+        date: "2026-09-06",
+        region: "경북",
+        place: "문경새재도립공원 제1주차장",
+        distances: ["13km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제9회 인천서구 단축마라톤",
+        date: "2026-09-06",
+        region: "인천",
+        place: "청라호수공원 멀티프라자 트랙",
+        distances: ["10km", "4.3km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 봉화송이마라톤",
+        date: "2026-09-06",
+        region: "경북",
+        place: "봉화공설운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Run in 영덕",
+        date: "2026-09-06",
+        region: "경북",
+        place: "영덕 대진해수욕장~고래불해수욕장",
+        distances: ["8km", "4km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 비포 선라이즈 슬로우 마라톤",
+        date: "2026-09-12",
+        region: "강원",
+        place: "강릉 경포호수",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "Bbang Trail Run 2026",
+        date: "2026-09-12",
+        region: "강원",
+        place: "정선 하이원 리조트",
+        distances: ["30K", "20K", "12K"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 초록우산 런웨이 마라톤",
+        date: "2026-09-12",
+        region: "대전",
+        place: "대전엑스포시민광장",
+        distances: ["하프", "10km", "5km", "3km 걷기", "3km 어린이 걷기"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 장수 레드푸드레이스",
+        date: "2026-09-12",
+        region: "전북",
+        place: "장수말역사체험관",
+        distances: ["16km", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 굿네이버스 레이스",
+        date: "2026-09-12",
+        region: "서울",
+        place: "여의도 한강공원 물빛무대",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제6회 에그마라톤",
+        date: "2026-09-12",
+        region: "경기",
+        place: "경인아라뱃길여객터미널 아라타워",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 88run",
+        date: "2026-09-12",
+        region: "경기",
+        place: "미사경정공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 화이트런 기부마라톤",
+        date: "2026-09-12",
+        region: "서울",
+        place: "영등포구 신정교하부 육상트랙구장",
+        distances: ["10km", "4.2km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 에너지 히어로 레이스",
+        date: "2026-09-12",
+        region: "서울",
+        place: "서울월드컵경기장 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 여수 백리섬섬 트레일런",
+        date: "2026-09-12",
+        region: "전남",
+        place: "청심 국제해양청소년수련원",
+        distances: ["40K", "27K", "16K"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 양양강변 전국마라톤",
+        date: "2026-09-12",
+        region: "강원",
+        place: "강원도 양양군 웰컴센터",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 나이트런 플러스 청주",
+        date: "2026-09-12",
+        region: "충북",
+        place: "청주시 무심천체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 히어로레이스",
+        date: "2026-09-13",
+        region: "서울",
+        place: "여의도공원 문화의마당",
+        distances: ["15km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 러닝월드 10K",
+        date: "2026-09-13",
+        region: "대전",
+        place: "대전엑스포시민광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 포항배터리 마라톤",
+        date: "2026-09-13",
+        region: "경북",
+        place: "포항운하관 광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 포항 이차전지 마라톤",
+        date: "2026-09-13",
+        region: "경북",
+        place: "포항운하관 주차장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제16회 스마일런 페스티벌",
+        date: "2026-09-13",
+        region: "서울",
+        place: "상암동 평화의공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제26회 강화바다마라톤",
+        date: "2026-09-13",
+        region: "인천",
+        place: "강화함상공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 울진 금강송 힐링마라톤",
+        date: "2026-09-13",
+        region: "경북",
+        place: "울진종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 런서울런",
+        date: "2026-09-13",
+        region: "서울",
+        place: "서울광장",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제19회 구로 안양천 가을마라톤",
+        date: "2026-09-13",
+        region: "서울",
+        place: "구일역 하부 인라인스케이트장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 장수 트레일레이스 Fall",
+        date: "2026-09-19",
+        region: "전북",
+        place: "장수종합경기장",
+        distances: ["100km", "38K-J"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제18회 사이버영토수호 마라톤",
+        date: "2026-09-19",
+        region: "서울",
+        place: "여의도 한강공원 물빛무대",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Just Run10 김해 대동",
+        date: "2026-09-19",
+        region: "경남",
+        place: "김해 대동생태체육공원 축구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 안양천 하프마라톤",
+        date: "2026-09-19",
+        region: "서울",
+        place: "신정교 하부 영롱이 억새구장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 시티포레스티벌 런핏 디스커버리",
+        date: "2026-09-19",
+        region: "경기",
+        place: "고양시 일산호수공원",
+        distances: ["10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 사찰런",
+        date: "2026-09-19",
+        region: "경북",
+        place: "경산 갓바위 소원길",
+        distances: ["6.3km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 남동청년런",
+        date: "2026-09-19",
+        region: "인천",
+        place: "인천대공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 경기신문 씨사이드마라톤",
+        date: "2026-09-19",
+        region: "인천",
+        place: "영종구 씨사이드파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 금산인삼축제 마라톤",
+        date: "2026-09-19",
+        region: "충남",
+        place: "금산세계인삼엑스포주차장",
+        distances: ["하프", "10km", "4km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 여수 낭도 트레일",
+        date: "2026-09-19",
+        region: "전남",
+        place: "여수 화정면 낭도출장소 앞 주차장",
+        distances: ["13km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 무도런 경주",
+        date: "2026-09-19",
+        region: "경북",
+        place: "경주시민운동장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제4회 문경오미자런",
+        date: "2026-09-19",
+        region: "경북",
+        place: "문경종합온천 뒤 주차장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 공주마라톤",
+        date: "2026-09-20",
+        region: "충남",
+        place: "공주시민운동장",
+        distances: ["풀", "32km", "하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 한돈런",
+        date: "2026-09-20",
+        region: "경기",
+        place: "미사 조정경기장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 인천송도국제마라톤",
+        date: "2026-09-20",
+        region: "인천",
+        place: "국립 인천대학교 송도캠퍼스 정문 앞",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 울산 남구청장배 마라톤",
+        date: "2026-09-20",
+        region: "울산",
+        place: "태화강국가정원 왕버들 공연장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제19회 가평 자라섬마라톤",
+        date: "2026-09-20",
+        region: "경기",
+        place: "가평종합운동장",
+        distances: ["하프", "10km", "10km 커플런", "5km", "4.2km 패밀리런"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 동대문마라톤",
+        date: "2026-09-20",
+        region: "서울",
+        place: "중랑천 제1수변공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 마포구청장배 마라톤",
+        date: "2026-09-20",
+        region: "서울",
+        place: "평화의공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 제20회 선사마라톤",
+        date: "2026-09-20",
+        region: "서울",
+        place: "서울 암사동 유적 앞 특설무대",
+        distances: ["하프", "10km", "5km", "5km 걷기"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 안산마라톤",
+        date: "2026-09-20",
+        region: "경기",
+        place: "대부향기테마파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+
+    // =========================
+    // 2026년 10월
+    // =========================
+
+    {
+        name: "2026 Trans Jeju UTMB",
+        date: "2026-10-02",
+        region: "제주",
+        place: "제주월드컵경기장",
+        distances: ["100km", "70km", "20km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 완주트레일런",
+        date: "2026-10-03",
+        region: "전북",
+        place: "완주군 고산자연휴양림",
+        distances: ["36K", "22K", "7K"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 마스터즈 하프마라톤",
+        date: "2026-10-03",
+        region: "서울",
+        place: "상암 월드컵공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Just Run10 청주 1224",
+        date: "2026-10-03",
+        region: "충북",
+        place: "무심천체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 아산 이순신 트레일",
+        date: "2026-10-03",
+        region: "충남",
+        place: "아산 신정호 이순신장군 동상",
+        distances: ["60km", "46km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 서산 코스모스 황금들판 마라톤",
+        date: "2026-10-03",
+        region: "충남",
+        place: "서산스포츠테마파크",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제25회 김제 새만금 지평선 마라톤",
+        date: "2026-10-03",
+        region: "전북",
+        place: "김제시민운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 천사데이 동두천마라톤",
+        date: "2026-10-03",
+        region: "경기",
+        place: "경기도 동두천시 캠프보산",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 춘천연합뉴스마라톤",
+        date: "2026-10-03",
+        region: "강원",
+        place: "춘천시 엘리시안 강촌",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 제2회 아산 이순신 트레일 60K",
+        date: "2026-10-03",
+        region: "충남",
+        place: "아산 신정호 이순신장군 동상",
+        distances: ["60km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 ROK Army Trail Running",
+        date: "2026-10-03",
+        region: "경기",
+        place: "용인시 처인구 육군 특전사 훈련코스",
+        distances: ["16.25km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 S-OIL 50주년 마라톤",
+        date: "2026-10-04",
+        region: "서울",
+        place: "월드컵공원 평화광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 YTN 서울투어마라톤",
+        date: "2026-10-04",
+        region: "서울",
+        place: "서울광장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 런유어웨이 서울 10K",
+        date: "2026-10-04",
+        region: "서울",
+        place: "여의도공원 문화의광장",
+        distances: ["10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제20회 달서 하프마라톤",
+        date: "2026-10-04",
+        region: "대구",
+        place: "대구 달서구 호림강나루공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제23회 경남마라톤",
+        date: "2026-10-04",
+        region: "경남",
+        place: "창원종합운동장 보조경기장",
+        distances: ["10km", "3km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 파주북시티마라톤",
+        date: "2026-10-04",
+        region: "경기",
+        place: "파주출판도시",
+        distances: ["10km", "5km", "3km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 안동마라톤",
+        date: "2026-10-04",
+        region: "경북",
+        place: "안동시민운동장",
+        distances: ["풀", "하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 홍천사랑마라톤",
+        date: "2026-10-04",
+        region: "강원",
+        place: "홍천종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제14회 광명건강달리기",
+        date: "2026-10-04",
+        region: "경기",
+        place: "광명 찬빛광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 소노 런트립 경주",
+        date: "2026-10-04",
+        region: "경북",
+        place: "소노캄 경주",
+        distances: ["9km", "7km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 한경 서울마라톤",
+        date: "2026-10-05",
+        region: "서울",
+        place: "여의도공원 문화의마당",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "Run Sense 2026",
+        date: "2026-10-05",
+        region: "서울",
+        place: "서울 상암동 월드컵공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 서울오픈마라톤",
+        date: "2026-10-05",
+        region: "서울",
+        place: "광화문광장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제12회 시흥전국하프마라톤",
+        date: "2026-10-05",
+        region: "경기",
+        place: "한국공학대학교 제2캠퍼스",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제23회 강남국제평화마라톤",
+        date: "2026-10-05",
+        region: "서울",
+        place: "봉은사로 삼성1동 주민센터",
+        distances: ["풀", "하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 양주 천일홍 가을페스타 마라톤",
+        date: "2026-10-05",
+        region: "경기",
+        place: "양주시 나리공원",
+        distances: ["20km", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제27회 홍성마라톤",
+        date: "2026-10-09",
+        region: "충남",
+        place: "홍주종합경기장",
+        distances: ["하프", "10km", "10km 단체전", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "Life Love Marathon With Wyd",
+        date: "2026-10-09",
+        region: "경기",
+        place: "안성 미리내성지",
+        distances: ["10km", "5km", "5km 걷기"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 한글런",
+        date: "2026-10-09",
+        region: "충남",
+        place: "세종시 중앙공원 도시축제마당",
+        distances: ["10.9km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 수원교구 생명마라톤",
+        date: "2026-10-09",
+        region: "경기",
+        place: "미리내성지",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "빵빵런 2026 대전",
+        date: "2026-10-09",
+        region: "대전",
+        place: "대전 엑스포 시민광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 고흥 우주항공 마라톤",
+        date: "2026-10-09",
+        region: "전남",
+        place: "고흥군 박지성공설운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제5회 무등산 그레이트 마라톤",
+        date: "2026-10-10",
+        region: "전남",
+        place: "화순 금호스파리조트",
+        distances: ["30km", "하프", "10km", "5.18km", "2km 걷기"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제4회 강서 허준런",
+        date: "2026-10-10",
+        region: "서울",
+        place: "서울식물원 초지원",
+        distances: ["10km", "5km", "3km", "패밀리런"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 카카오프렌즈런",
+        date: "2026-10-10",
+        region: "경기",
+        place: "탄천 종합운동장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제9회 거제섬꽃마라톤",
+        date: "2026-10-10",
+        region: "경남",
+        place: "거제스포츠파크",
+        distances: ["하프", "10km", "4km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 경포마라톤",
+        date: "2026-10-10",
+        region: "강원",
+        place: "강원특별자치도 강릉시",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제5회 구미시장배 금오산 트레일",
+        date: "2026-10-10",
+        region: "경북",
+        place: "금오산 공영 대주차장",
+        distances: ["23km", "18km", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제3회 성동구청장배 마라톤",
+        date: "2026-10-10",
+        region: "서울",
+        place: "살곶이대운동장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 충주 앙성 비내길 마라톤",
+        date: "2026-10-10",
+        region: "충북",
+        place: "충주 앙성온천광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 제주 바람개비런",
+        date: "2026-10-10",
+        region: "제주",
+        place: "한림수협 다목적어업인종합지원센터",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제3회 서울트레일런",
+        date: "2026-10-10",
+        region: "서울",
+        place: "시청 덕수궁돌담길",
+        distances: [],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 하트런",
+        date: "2026-10-10",
+        region: "서울",
+        place: "올림픽공원 피크닉장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제7회 천안삼거리 흥타령 울트라마라톤",
+        date: "2026-10-10",
+        region: "충남",
+        place: "천안삼거리공원",
+        distances: ["100km", "60km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 서울레이스",
+        date: "2026-10-11",
+        region: "서울",
+        place: "서울광장",
+        distances: ["하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 MBN 나주마라톤",
+        date: "2026-10-11",
+        region: "전남",
+        place: "나주종합스포츠파크",
+        distances: ["풀", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 진안고원 Forestival Run Heal",
+        date: "2026-10-11",
+        region: "전북",
+        place: "국립진안고원산림치유원",
+        distances: ["16km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 당진 황금들판 마라톤",
+        date: "2026-10-11",
+        region: "충남",
+        place: "당진 삽교 관광단지 헬기장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 인천로봇랜드 퓨처런",
+        date: "2026-10-11",
+        region: "인천",
+        place: "인천로봇랜드 로봇타워",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Univ Run",
+        date: "2026-10-11",
+        region: "서울",
+        place: "구일역 안양천 축구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제22회 금천건강달리기",
+        date: "2026-10-11",
+        region: "서울",
+        place: "안양천 다목적광장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제10회 가을철 산불예방 마라톤",
+        date: "2026-10-11",
+        region: "서울",
+        place: "광평교운동장",
+        distances: ["풀", "31km", "하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 평택항마라톤",
+        date: "2026-10-11",
+        region: "경기",
+        place: "평택항 엠에스로지스틱",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 문경오미자 하프마라톤",
+        date: "2026-10-11",
+        region: "경북",
+        place: "문경시민운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 핑크런",
+        date: "2026-10-11",
+        region: "서울",
+        place: "상암월드컵공원 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 울산마라톤",
+        date: "2026-10-11",
+        region: "울산",
+        place: "울산종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 천안 이봉주마라톤",
+        date: "2026-10-11",
+        region: "충남",
+        place: "천안종합운동장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제6회 영등포 육상대회",
+        date: "2026-10-11",
+        region: "서울",
+        place: "신정교하부육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 함께런 러닝 페스티벌",
+        date: "2026-10-11",
+        region: "경기",
+        place: "미사경정공원 관리동 광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 대전 Dtrail",
+        date: "2026-10-17",
+        region: "대전",
+        place: "보문산야외음악당",
+        distances: ["50km", "25km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 경주마라톤",
+        date: "2026-10-17",
+        region: "경북",
+        place: "경주시민운동장",
+        distances: ["풀", "하프", "10km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제24회 청원생명쌀 대청호마라톤",
+        date: "2026-10-17",
+        region: "충북",
+        place: "문의체육공원",
+        distances: ["풀", "하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 정선 동강마라톤",
+        date: "2026-10-17",
+        region: "강원",
+        place: "정선생태체험학습장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제7회 태안 전국어울림마라톤",
+        date: "2026-10-17",
+        region: "충남",
+        place: "태안군 안면읍 꽃지해수욕장 일원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 경청마라톤",
+        date: "2026-10-17",
+        region: "서울",
+        place: "신정교 하부 영롱이 억새구장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제2회 1019 평화마라톤",
+        date: "2026-10-17",
+        region: "전남",
+        place: "여수진남경기장 주경기장",
+        distances: ["5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 광주 남구 마라톤",
+        date: "2026-10-17",
+        region: "광주",
+        place: "광주공원 앞 광주천변 광주교",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 의정부 워터마라톤",
+        date: "2026-10-17",
+        region: "경기",
+        place: "동막교인라인광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제14회 마이크로 패밀리 킥앤런",
+        date: "2026-10-17",
+        region: "경기",
+        place: "하남 미사 경정공원",
+        distances: [],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 Uplus 119 Memorial Run",
+        date: "2026-10-17",
+        region: "세종",
+        place: "세종중앙공원 도시축제마당",
+        distances: ["11.9km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 억새노을마라톤",
+        date: "2026-10-17",
+        region: "광주",
+        place: "상무시민공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 하남 당정마라톤",
+        date: "2026-10-18",
+        region: "경기",
+        place: "하남스타필드 앞 당정뜰",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 아시아오픈마라톤",
+        date: "2026-10-18",
+        region: "서울",
+        place: "서울 광화문광장",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "Greenstep 2026",
+        date: "2026-10-18",
+        region: "전남",
+        place: "전라남도 해남군 솔라시도",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제22회 대구 북구마라톤",
+        date: "2026-10-18",
+        region: "대구",
+        place: "금호강 산격야영장",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제25회 대청호마라톤",
+        date: "2026-10-18",
+        region: "대전",
+        place: "대청공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제23회 여주 세종대왕마라톤",
+        date: "2026-10-18",
+        region: "경기",
+        place: "여주 현암지구공원",
+        distances: ["하프", "10km", "4km", "1km 휠체어"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제19회 중랑 장미마라톤",
+        date: "2026-10-18",
+        region: "서울",
+        place: "중화체육공원",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "제28회 창원시민건강달리기",
+        date: "2026-10-18",
+        region: "경남",
+        place: "창원스포츠파크 보조경기장",
+        distances: ["6km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 담양 트레일런 데이브레이크",
+        date: "2026-10-24",
+        region: "전남",
+        place: "담양 추성경기장",
+        distances: ["29K+", "9K+"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 서울 펫림픽런 With Go",
+        date: "2026-10-24",
+        region: "서울",
+        place: "서울 월드컵경기장 평화광장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 SBS 런 뮤직 페스티벌 안동",
+        date: "2026-10-24",
+        region: "경북",
+        place: "안동 탈춤공원",
+        distances: ["하프", "10km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 제3회 감성런",
+        date: "2026-10-24",
+        region: "서울",
+        place: "신정교하부육상트랙구장",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 익산 기부런",
+        date: "2026-10-24",
+        region: "전북",
+        place: "익산시종합운동장",
+        distances: ["10km", "6.4km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 하남 가을 패밀리 마라톤",
+        date: "2026-10-24",
+        region: "경기",
+        place: "하남 미사 경정공원",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 경기도 옛길 함께달리기",
+        date: "2026-10-24",
+        region: "경기",
+        place: "도농체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 세종런 26",
+        date: "2026-10-24",
+        region: "세종",
+        place: "세종중앙공원 도시축제마당",
+        distances: ["10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 뉴시스 씨 마라톤",
+        date: "2026-10-24",
+        region: "인천",
+        place: "영종도 씨사이드파크 하늘구름광장",
+        distances: ["하프", "10km", "5km"],
+        status: "접수 중",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 무서런",
+        date: "2026-10-24",
+        region: "충북",
+        place: "무심천체육공원",
+        distances: ["10km", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 불닭 버닝 트레일런",
+        date: "2026-10-24",
+        region: "강원",
+        place: "대관령 삼양라운드힐",
+        distances: ["23K", "13K", "5km"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    },
+
+    {
+        name: "2026 광명평화마라톤",
+        date: "2026-10-25",
+        region: "경기",
+        place: "광명역",
+        distances: ["하프", "10km", "5km", "5km 커플런"],
+        status: "접수 마감",
+        price: "공식 홈페이지 확인",
+        period: "",
+        url: ""
+    }
+
+];
+
+
+/* =========================================================
+   현재 상태
+   ========================================================= */
+
+let showOpenOnly = false;
+let showCurrentMonthOnly = false;
+
+
+/* =========================================================
+   날짜 관련
+   ========================================================= */
+
+function formatDate(dateString) {
+    const date = new Date(dateString + "T00:00:00");
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}.${month}.${day}`;
+}
+
+function getMonthKey(dateString) {
+    return dateString.substring(0, 7);
+}
+
+
+/* =========================================================
+   필터 옵션 만들기
+   ========================================================= */
+
+function initializeFilters() {
+
+    const regionSelect = document.getElementById("region");
+    const distanceSelect = document.getElementById("distance");
+    const monthSelect = document.getElementById("month");
+
+    const regions = [...new Set(
+        races.map(race => race.region)
+    )].sort();
+
+    const distances = [...new Set(
+        races.flatMap(race => race.distances || [])
+    )].sort();
+
+    const months = [...new Set(
+        races.map(race => getMonthKey(race.date))
+    )].sort();
+
+    regions.forEach(region => {
+        const option = document.createElement("option");
+        option.value = region;
+        option.textContent = region;
+        regionSelect.appendChild(option);
+    });
+
+    distances.forEach(distance => {
+        const option = document.createElement("option");
+        option.value = distance;
+        option.textContent = distance;
+        distanceSelect.appendChild(option);
+    });
+
+    months.forEach(month => {
+
+        const option = document.createElement("option");
+
+        option.value = month;
+
+        const [year, monthNumber] = month.split("-");
+
+        option.textContent =
+            `${year}년 ${monthNumber}월`;
+
+        monthSelect.appendChild(option);
+    });
+}
+
+
+/* =========================================================
+   통계
+   ========================================================= */
+
+function updateStats() {
+
+    const totalCount =
+        document.getElementById("totalCount");
+
+    const openCount =
+        document.getElementById("openCount");
+
+    const monthCount =
+        document.getElementById("monthCount");
+
+    const currentMonth =
+        new Date().toISOString().substring(0, 7);
+
+    totalCount.textContent =
+        races.length;
+
+    openCount.textContent =
+        races.filter(race =>
+            race.status === "접수 중"
+        ).length;
+
+    monthCount.textContent =
+        races.filter(race =>
+            getMonthKey(race.date) === currentMonth
+        ).length;
+}
+
+
+/* =========================================================
+   대회 카드
+   ========================================================= */
+
+function createRaceCard(race, index) {
+
+    const card = document.createElement("article");
+
+    card.className = "race-card";
+
+    const isOpen =
+        race.status === "접수 중";
+
+    const statusClass =
+        isOpen ? "open" : "closed";
+
+    const distanceHtml =
+        (race.distances || [])
+        .map(distance =>
+            `<span class="distance-tag">${distance}</span>`
+        )
+        .join("");
+
+    let officialLink = "";
+
+    if (race.url && race.url.trim() !== "") {
+
+        officialLink = `
+            <a
+                class="official-link"
+                href="${race.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                공식 홈페이지
+            </a>
         `;
 
     } else {
 
+        officialLink = `
+            <div
+                style="
+                    margin-top:9px;
+                    height:40px;
+                    line-height:40px;
+                    border-radius:9px;
+                    background:#f8fafc;
+                    color:#94a3b8;
+                    text-align:center;
+                    font-size:13px;
+                    font-weight:700;
+                "
+            >
+                공식 홈페이지 확인
+            </div>
+        `;
+    }
 
-        /* =========================
-           요소
-        ========================= */
+    card.innerHTML = `
 
-        const keywordInput =
-            document.getElementById("keyword");
+        <div class="race-top">
 
-        const regionSelect =
-            document.getElementById("region");
+            <h3 class="race-name">
+                ${race.name}
+            </h3>
 
-        const distanceSelect =
-            document.getElementById("distance");
+            <span class="status ${statusClass}">
+                ${race.status}
+            </span>
 
-        const monthSelect =
-            document.getElementById("month");
+        </div>
 
-        const searchBtn =
-            document.getElementById("searchBtn");
+        <div class="race-date">
+            ${formatDate(race.date)}
+        </div>
 
-        const resetBtn =
-            document.getElementById("resetBtn");
+        <div class="race-info">
 
-        const openBtn =
-            document.getElementById("openBtn");
+            <div>
+                <span class="info-label">지역</span>
+                ${race.region}
+            </div>
 
-        const thisMonthBtn =
-            document.getElementById("thisMonthBtn");
+            <div>
+                <span class="info-label">장소</span>
+                ${race.place}
+            </div>
 
-        const raceList =
-            document.getElementById("raceList");
+        </div>
 
-        const resultInfo =
-            document.getElementById("resultInfo");
+        <div class="distance-tags">
+            ${
+                distanceHtml ||
+                `<span class="distance-tag">종목 정보 확인</span>`
+            }
+        </div>
 
-        const totalCount =
-            document.getElementById("totalCount");
+        <button
+            class="detail-button"
+            onclick="toggleDetails(${index})"
+        >
+            상세 정보 보기
+        </button>
 
-        const openCount =
-            document.getElementById("openCount");
+        <div
+            class="details"
+            id="details-${index}"
+        >
 
-        const monthCount =
-            document.getElementById("monthCount");
+            <div class="details-row">
+                <span>대회일</span>
+                <span>${formatDate(race.date)}</span>
+            </div>
 
+            <div class="details-row">
+                <span>지역</span>
+                <span>${race.region}</span>
+            </div>
 
-        let openOnly = false;
+            <div class="details-row">
+                <span>장소</span>
+                <span>${race.place}</span>
+            </div>
 
-
-        /* =========================
-           지역 자동 생성
-        ========================= */
-
-        function createRegionOptions() {
-
-            const regions =
-                [
-                    ...new Set(
-                        races
-                            .map(
-                                race =>
-                                    race.region
-                            )
-                            .filter(
-                                region =>
-                                    region &&
-                                    String(region).trim()
-                            )
-                    )
-                ]
-                .sort(
-                    (a, b) =>
-                        String(a)
-                            .localeCompare(
-                                String(b),
-                                "ko"
-                            )
-                );
-
-
-            regions.forEach(
-                region => {
-
-                    const option =
-                        document.createElement(
-                            "option"
-                        );
-
-                    option.value =
-                        region;
-
-                    option.textContent =
-                        region;
-
-                    regionSelect.appendChild(
-                        option
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =========================
-           거리 자동 생성
-        ========================= */
-
-        function createDistanceOptions() {
-
-            const distances =
-                [
-                    ...new Set(
-                        races
-                            .flatMap(
-                                race =>
-                                    Array.isArray(
-                                        race.distances
-                                    )
-                                    ? race.distances
-                                    : []
-                            )
-                            .filter(
-                                distance =>
-                                    distance &&
-                                    String(distance).trim()
-                            )
-                    )
-                ];
-
-
-            /*
-             * 일반적으로 많이 쓰는 거리 순서
-             */
-
-            const preferredOrder = [
-                "5km",
-                "10km",
-                "15km",
-                "20km",
-                "하프",
-                "풀코스"
-            ];
-
-
-            distances.sort(
-                (a, b) => {
-
-                    const aIndex =
-                        preferredOrder.indexOf(a);
-
-                    const bIndex =
-                        preferredOrder.indexOf(b);
-
-
-                    if (
-                        aIndex !== -1 &&
-                        bIndex !== -1
-                    ) {
-
-                        return aIndex - bIndex;
-
+            <div class="details-row">
+                <span>참가 종목</span>
+                <span>
+                    ${
+                        race.distances.length
+                            ? race.distances.join(", ")
+                            : "공식 홈페이지 확인"
                     }
+                </span>
+            </div>
+
+            <div class="details-row">
+                <span>참가비</span>
+                <span>${race.price}</span>
+            </div>
+
+            ${
+                race.period
+                    ? `
+                        <div class="details-row">
+                            <span>접수기간</span>
+                            <span>${race.period}</span>
+                        </div>
+                    `
+                    : ""
+            }
+
+            ${officialLink}
+
+        </div>
+    `;
+
+    return card;
+}
 
 
-                    if (aIndex !== -1) {
-                        return -1;
-                    }
+/* =========================================================
+   상세정보 열기 / 닫기
+   ========================================================= */
+
+function toggleDetails(index) {
+
+    const details =
+        document.getElementById(`details-${index}`);
+
+    if (!details) {
+        return;
+    }
+
+    details.classList.toggle("open");
+
+    const button =
+        details.previousElementSibling;
+
+    if (
+        button &&
+        button.classList.contains("detail-button")
+    ) {
+
+        button.textContent =
+            details.classList.contains("open")
+                ? "상세 정보 닫기"
+                : "상세 정보 보기";
+    }
+}
 
 
-                    if (bIndex !== -1) {
-                        return 1;
-                    }
+/* =========================================================
+   검색
+   ========================================================= */
 
+function searchRaces() {
 
-                    return String(a)
-                        .localeCompare(
-                            String(b),
-                            "ko"
-                        );
+    const keyword =
+        document
+            .getElementById("keyword")
+            .value
+            .trim()
+            .toLowerCase();
 
-                }
-            );
+    const region =
+        document
+            .getElementById("region")
+            .value;
 
+    const distance =
+        document
+            .getElementById("distance")
+            .value;
 
-            distances.forEach(
-                distance => {
+    const month =
+        document
+            .getElementById("month")
+            .value;
 
-                    const option =
-                        document.createElement(
-                            "option"
-                        );
+    const filtered =
+        races.filter(race => {
 
-                    option.value =
-                        distance;
+            const searchableText = [
+                race.name,
+                race.region,
+                race.place,
+                ...(race.distances || [])
+            ]
+            .join(" ")
+            .toLowerCase();
 
-                    option.textContent =
-                        distance;
+            const matchesKeyword =
+                !keyword ||
+                searchableText.includes(keyword);
 
-                    distanceSelect.appendChild(
-                        option
-                    );
+            const matchesRegion =
+                !region ||
+                race.region === region;
 
-                }
-            );
+            const matchesDistance =
+                !distance ||
+                (race.distances || []).includes(distance);
 
-        }
+            const matchesMonth =
+                !month ||
+                getMonthKey(race.date) === month;
 
-
-        /* =========================
-           통계
-        ========================= */
-
-        function updateStats() {
-
-            const today =
-                new Date();
-
+            const matchesOpen =
+                !showOpenOnly ||
+                race.status === "접수 중";
 
             const currentMonth =
-                String(
-                    today.getMonth() + 1
-                ).padStart(2, "0");
+                new Date()
+                    .toISOString()
+                    .substring(0, 7);
+
+            const matchesCurrentMonth =
+                !showCurrentMonthOnly ||
+                getMonthKey(race.date) === currentMonth;
+
+            return (
+                matchesKeyword &&
+                matchesRegion &&
+                matchesDistance &&
+                matchesMonth &&
+                matchesOpen &&
+                matchesCurrentMonth
+            );
+        });
+
+    renderRaces(filtered);
+}
 
 
-            totalCount.textContent =
-                races.length;
+/* =========================================================
+   대회 출력
+   ========================================================= */
 
+function renderRaces(list) {
 
-            openCount.textContent =
-                races.filter(
-                    race =>
-                        race.status === "접수 중"
-                ).length;
+    const raceList =
+        document.getElementById("raceList");
 
+    const resultCount =
+        document.getElementById("resultCount");
 
-            monthCount.textContent =
-                races.filter(
-                    race =>
-                        String(
-                            race.date || ""
-                        ).substring(5, 7)
-                        === currentMonth
-                ).length;
+    resultCount.textContent =
+        `${list.length}개`;
 
-        }
+    raceList.innerHTML = "";
 
+    if (list.length === 0) {
 
-        /* =========================
-           날짜
-        ========================= */
+        raceList.innerHTML = `
+            <div class="empty">
 
-        function formatDate(dateString) {
+                <h3>
+                    검색 결과가 없습니다.
+                </h3>
 
-            if (!dateString) {
-                return "";
-            }
+                <p>
+                    검색 조건을 변경하거나
+                    초기화해보세요.
+                </p>
 
+            </div>
+        `;
 
-            const parts =
-                dateString.split("-");
+        return;
+    }
 
+    list
+        .slice()
+        .sort((a, b) =>
+            a.date.localeCompare(b.date)
+        )
+        .forEach((race) => {
 
-            if (parts.length !== 3) {
-                return dateString;
-            }
+            const originalIndex =
+                races.indexOf(race);
 
-
-            const year =
-                Number(parts[0]);
-
-            const month =
-                Number(parts[1]);
-
-            const day =
-                Number(parts[2]);
-
-
-            const date =
-                new Date(
-                    year,
-                    month - 1,
-                    day
-                );
-
-
-            const weekdays = [
-                "일",
-                "월",
-                "화",
-                "수",
-                "목",
-                "금",
-                "토"
-            ];
-
-
-            return `${year}년 ${month}월 ${day}일 (${weekdays[date.getDay()]})`;
-
-        }
-
-
-        /* =========================
-           상태
-        ========================= */
-
-        function getStatusClass(status) {
-
-            if (status === "접수 중") {
-                return "open";
-            }
-
-
-            if (status === "접수 예정") {
-                return "soon";
-            }
-
-
-            return "";
-
-        }
-
-
-        /* =========================
-           거리 뱃지
-        ========================= */
-
-        function createDistanceHTML(
-            distances
-        ) {
-
-            if (!Array.isArray(distances)) {
-                return "";
-            }
-
-
-            return distances
-                .map(
-                    distance =>
-                        `<span class="badge">${distance}</span>`
+            raceList.appendChild(
+                createRaceCard(
+                    race,
+                    originalIndex
                 )
-                .join("");
+            );
+        });
+}
 
-        }
 
+/* =========================================================
+   접수 중 필터
+   ========================================================= */
 
-        /* =========================
-           상세정보
-        ========================= */
+function toggleOpenFilter() {
 
-        function toggleDetail(button) {
+    showOpenOnly =
+        !showOpenOnly;
 
-            const detail =
-                button.nextElementSibling;
+    const button =
+        document.getElementById("openFilter");
 
+    button.classList.toggle(
+        "active",
+        showOpenOnly
+    );
 
-            if (!detail) {
-                return;
-            }
+    searchRaces();
+}
 
 
-            const isOpen =
-                detail.classList.toggle(
-                    "show"
-                );
+/* =========================================================
+   이번 달 필터
+   ========================================================= */
 
+function toggleCurrentMonthFilter() {
 
-            if (isOpen) {
+    showCurrentMonthOnly =
+        !showCurrentMonthOnly;
 
-                button.textContent =
-                    "▲ 상세정보 닫기";
-
-            } else {
-
-                button.textContent =
-                    "▼ 상세정보 보기";
-
-            }
-
-        }
-
-
-        /* =========================
-           대회 카드
-        ========================= */
-
-        function createRaceCard(race) {
-
-            const distanceHTML =
-                createDistanceHTML(
-                    race.distances
-                );
-
-
-            const statusClass =
-                getStatusClass(
-                    race.status
-                );
-
-
-            const homepageHTML =
-                race.url
-
-                ?
-
-                `<a
-                    class="home-link"
-                    href="${race.url}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    공식 홈페이지 / 신청하기 →
-                </a>`
-
-                :
-
-                `<span class="home-link disabled">
-                    공식 홈페이지 정보 없음
-                </span>`;
-
-
-            return `
-
-                <article class="race-card">
-
-                    <div class="card-top">
-
-                        <div>
-
-                            <div class="race-date">
-                                📅 ${formatDate(race.date)}
-                            </div>
-
-
-                            <h3>
-                                ${race.name}
-                            </h3>
-
-                        </div>
-
-
-                        <div class="status ${statusClass}">
-                            ${race.status || "상태 확인 필요"}
-                        </div>
-
-                    </div>
-
-
-                    <div class="badges">
-                        ${distanceHTML}
-                    </div>
-
-
-                    <div class="info">
-
-                        📍 ${race.region}
-                        · ${race.place}<br>
-
-                        💰 참가비 :
-                        ${race.price || "공식 홈페이지 확인"}
-
-                    </div>
-
-
-                    <button
-                        class="detail-btn"
-                        onclick="toggleDetail(this)"
-                    >
-                        ▼ 상세정보 보기
-                    </button>
-
-
-                    <div class="detail-box">
-
-                        <div class="detail-title">
-                            🏃 대회 상세정보
-                        </div>
-
-
-                        <div class="detail-grid">
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    대회일
-                                </span>
-
-                                <span class="detail-value">
-                                    ${formatDate(race.date)}
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    접수 상태
-                                </span>
-
-                                <span class="detail-value">
-                                    ${race.status || "확인 필요"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    지역
-                                </span>
-
-                                <span class="detail-value">
-                                    ${race.region || "정보 없음"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    장소
-                                </span>
-
-                                <span class="detail-value">
-                                    ${race.place || "정보 없음"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    참가 종목
-                                </span>
-
-                                <span class="detail-value">
-
-                                    ${
-                                        Array.isArray(
-                                            race.distances
-                                        )
-
-                                        ?
-
-                                        race.distances.join(
-                                            " · "
-                                        )
-
-                                        :
-
-                                        "정보 없음"
-                                    }
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    참가비
-                                </span>
-
-                                <span class="detail-value">
-                                    ${race.price || "공식 홈페이지 확인"}
-                                </span>
-
-                            </div>
-
-
-                            <div class="detail-item">
-
-                                <span class="detail-label">
-                                    접수기간
-                                </span>
-
-                                <span class="detail-value">
-                                    ${race.period || "공식 홈페이지 확인"}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-                        ${homepageHTML}
-
-                    </div>
-
-                </article>
-
-            `;
-
-        }
-
-
-        /* =========================
-           검색
-        ========================= */
-
-        function searchRaces() {
-
-            const keyword =
-                keywordInput.value
-                    .trim()
-                    .toLowerCase();
-
-
-            const region =
-                regionSelect.value;
-
-
-            const distance =
-                distanceSelect.value;
-
-
-            const month =
-                monthSelect.value;
-
-
-            const filteredRaces =
-                races
-                .filter(
-                    race => {
-
-                        const raceName =
-                            String(
-                                race.name || ""
-                            ).toLowerCase();
-
-
-                        const raceRegion =
-                            String(
-                                race.region || ""
-                            ).toLowerCase();
-
-
-                        const racePlace =
-                            String(
-                                race.place || ""
-                            ).toLowerCase();
-
-
-                        const raceDistances =
-                            Array.isArray(
-                                race.distances
-                            )
-
-                            ?
-
-                            race.distances
-                                .join(" ")
-                                .toLowerCase()
-
-                            :
-
-                            "";
-
-
-                        const searchText = `
-                            ${raceName}
-                            ${raceRegion}
-                            ${racePlace}
-                            ${raceDistances}
-                        `.toLowerCase();
-
-
-                        const matchesKeyword =
-                            !keyword ||
-                            searchText.includes(
-                                keyword
-                            );
-
-
-                        const matchesRegion =
-                            !region ||
-                            race.region === region;
-
-
-                        const matchesDistance =
-                            !distance ||
-                            (
-                                Array.isArray(
-                                    race.distances
-                                ) &&
-                                race.distances.includes(
-                                    distance
-                                )
-                            );
-
-
-                        const matchesMonth =
-                            !month ||
-                            String(
-                                race.date || ""
-                            ).substring(
-                                5,
-                                7
-                            ) === month;
-
-
-                        const matchesOpen =
-                            !openOnly ||
-                            race.status === "접수 중";
-
-
-                        return (
-                            matchesKeyword &&
-                            matchesRegion &&
-                            matchesDistance &&
-                            matchesMonth &&
-                            matchesOpen
-                        );
-
-                    }
-                )
-                .sort(
-                    (a, b) =>
-                        String(
-                            a.date || ""
-                        ).localeCompare(
-                            String(
-                                b.date || ""
-                            )
-                        )
-                );
-
-
-            resultInfo.innerHTML =
-                `총 <strong>${filteredRaces.length}</strong>개의 대회`;
-
-
-            if (
-                filteredRaces.length === 0
-            ) {
-
-                raceList.innerHTML = `
-
-                    <div class="empty">
-
-                        <h3>
-                            검색 결과가 없습니다.
-                        </h3>
-
-                        <p>
-                            검색 조건을 변경해보세요.
-                        </p>
-
-                    </div>
-
-                `;
-
-            } else {
-
-                raceList.innerHTML =
-                    filteredRaces
-                        .map(
-                            createRaceCard
-                        )
-                        .join("");
-
-            }
-
-        }
-
-
-        /* =========================
-           검색
-        ========================= */
-
-        searchBtn.addEventListener(
-            "click",
-            searchRaces
+    const button =
+        document.getElementById(
+            "currentMonthFilter"
         );
 
+    button.classList.toggle(
+        "active",
+        showCurrentMonthOnly
+    );
 
-        keywordInput.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (
-                    event.key === "Enter"
-                ) {
-
-                    searchRaces();
-
-                }
-
-            }
-        );
+    searchRaces();
+}
 
 
-        /* =========================
-           접수 중
-        ========================= */
+/* =========================================================
+   초기화
+   ========================================================= */
 
-        openBtn.addEventListener(
-            "click",
-            function() {
+function resetFilters() {
 
-                openOnly =
-                    !openOnly;
+    document.getElementById("keyword").value = "";
+    document.getElementById("region").value = "";
+    document.getElementById("distance").value = "";
+    document.getElementById("month").value = "";
+
+    showOpenOnly = false;
+    showCurrentMonthOnly = false;
+
+    document
+        .getElementById("openFilter")
+        .classList.remove("active");
+
+    document
+        .getElementById("currentMonthFilter")
+        .classList.remove("active");
+
+    searchRaces();
+}
 
 
-                openBtn.classList.toggle(
-                    "active",
-                    openOnly
-                );
+/* =========================================================
+   Enter 키로 검색
+   ========================================================= */
 
+document
+    .getElementById("keyword")
+    .addEventListener(
+        "keydown",
+        function(event) {
 
+            if (event.key === "Enter") {
                 searchRaces();
-
             }
-        );
+
+        }
+    );
 
 
-        /* =========================
-           이번 달
-        ========================= */
+/* =========================================================
+   데이터 개수 검사
+   ========================================================= */
 
-        thisMonthBtn.addEventListener(
-            "click",
-            function() {
+function checkDataCount() {
 
-                const today =
-                    new Date();
+    const warning =
+        document.getElementById("dataWarning");
 
+    if (races.length !== 150) {
 
-                const month =
-                    String(
-                        today.getMonth() + 1
-                    ).padStart(
-                        2,
-                        "0"
-                    );
+        warning.style.display = "block";
 
+        warning.textContent =
+            `현재 등록된 대회 수가 ${races.length}개입니다. 목표는 150개입니다.`;
 
-                monthSelect.value =
-                    month;
+    } else {
 
-
-                searchRaces();
-
-            }
-        );
-
-
-        /* =========================
-           초기화
-        ========================= */
-
-        resetBtn.addEventListener(
-            "click",
-            function() {
-
-                keywordInput.value = "";
-
-                regionSelect.value = "";
-
-                distanceSelect.value = "";
-
-                monthSelect.value = "";
-
-                openOnly = false;
-
-
-                openBtn.classList.remove(
-                    "active"
-                );
-
-
-                searchRaces();
-
-            }
-        );
-
-
-        /* =========================
-           실행
-        ========================= */
-
-        createRegionOptions();
-
-        createDistanceOptions();
-
-        updateStats();
-
-        searchRaces();
+        warning.style.display = "none";
 
     }
+
+    console.log(
+        "여기런 대회 수:",
+        races.length
+    );
+}
+
+
+/* =========================================================
+   실행
+   ========================================================= */
+
+initializeFilters();
+
+updateStats();
+
+checkDataCount();
+
+searchRaces();
 
 </script>
 
 </body>
 </html>
-```
