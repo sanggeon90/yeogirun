@@ -3076,19 +3076,6 @@ function checkDataCount() {
     const warning =
         document.getElementById("dataWarning");
 
-    if (races.length !== 150) {
-
-        warning.style.display = "block";
-
-        warning.textContent =
-            `현재 등록된 대회 수가 ${races.length}개입니다. 목표는 150개입니다.`;
-
-    } else {
-
-        warning.style.display = "none";
-
-    }
-
     console.log(
         "여기런 대회 수:",
         races.length
