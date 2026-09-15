@@ -2578,11 +2578,14 @@ function initializeFilters() {
     const regions = [...new Set(
         races.map(race => race.region)
     )].sort();
-
-    const distances = [...new Set(
-        races.flatMap(race => race.distances || [])
-    )].sort();
-
+const distances = [
+    "풀코스",
+    "하프코스",
+    "10km",
+    "5km",
+    "기타 종목"
+];
+   
     const months = [...new Set(
         races.map(race => getMonthKey(race.date))
     )].sort();
@@ -2890,10 +2893,16 @@ function searchRaces() {
                 !region ||
                 race.region === region;
 
-            const matchesDistance =
-                !distance ||
-                (race.distances || []).includes(distance);
-
+     const matchesDistance =
+    !distance ||
+    (distance === "풀코스" && (race.distances || []).includes("풀")) ||
+    (distance === "하프코스" && (race.distances || []).includes("하프")) ||
+    (distance === "10km" && (race.distances || []).includes("10km")) ||
+    (distance === "5km" && (race.distances || []).includes("5km")) ||
+    (distance === "기타 종목" &&
+        (race.distances || []).some(d =>
+            !["풀", "하프", "10km", "5km"].includes(d)
+        ));
             const matchesMonth =
                 !month ||
                 getMonthKey(race.date) === month;
