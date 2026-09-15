@@ -484,7 +484,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 600px) {
             .container {
                 width: min(100% - 22px, 1180px);
@@ -549,6 +548,28 @@
                 align-self: flex-start;
             }
         }
+
+        .seo-intro {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            margin: 24px 0;
+        }
+
+        .seo-intro h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .seo-intro p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+      
     </style>
 </head>
 
