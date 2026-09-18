@@ -3,10 +3,10 @@ const path = require("path");
 
 /*
 =========================================================
-여기런 상세페이지 자동 생성기
+여기런 상세페이지 생성 테스트
 =========================================================
-races.js의 대회 데이터를 읽어서
-/races/ 폴더에 상세페이지 HTML을 자동 생성합니다.
+현재는 2026 이일선마라톤 1개만 생성합니다.
+테스트가 끝난 후 전체 150개 생성 버전으로 되돌립니다.
 =========================================================
 */
 
@@ -24,7 +24,6 @@ if (!match) {
     throw new Error("races 배열을 찾을 수 없습니다.");
 }
 
-// races 배열 실행
 const races = Function(
     `"use strict"; return ${match[1]}`
 )();
@@ -33,7 +32,22 @@ console.log(`races.js에서 ${races.length}개 대회를 확인했습니다.`);
 
 
 // -------------------------------------------------------
-// 2. races 폴더 준비
+// 2. 테스트할 대회 찾기
+// -------------------------------------------------------
+
+const race = races.find(
+    item => item.name === "2026 이일선마라톤"
+);
+
+if (!race) {
+    throw new Error("2026 이일선마라톤 데이터를 찾을 수 없습니다.");
+}
+
+console.log(`테스트 대상: ${race.name}`);
+
+
+// -------------------------------------------------------
+// 3. races 폴더 준비
 // -------------------------------------------------------
 
 const outputDir = "./races";
@@ -44,7 +58,7 @@ if (!fs.existsSync(outputDir)) {
 
 
 // -------------------------------------------------------
-// 3. HTML 속성용 문자열 처리
+// 4. HTML 문자열 처리
 // -------------------------------------------------------
 
 function escapeHtml(value) {
@@ -58,47 +72,44 @@ function escapeHtml(value) {
 
 
 // -------------------------------------------------------
-// 4. 파일명 만들기
-//
-// 한글 파일명도 사용할 수 있지만,
-// 날짜 + 순번 방식으로 안정적인 URL을 만듭니다.
-//
-// 예:
-// 2026-09-03-race-001.html
-// 2026-09-05-race-002.html
-//
-// 단, 기존 이일선마라톤 URL은 유지합니다.
+// 5. 파일명
 // -------------------------------------------------------
 
-function createFileName(race, index) {
+const fileName = "2026-iilseon-marathon.html";
 
-    // 기존에 Google에 색인된 이일선마라톤 URL 유지
-    if (race.name === "2026 이일선마라톤") {
-        return "2026-iilseon-marathon.html";
-    }
-
-    const number = String(index + 1).padStart(3, "0");
-
-    return `${race.date}-race-${number}.html`;
-}
+const filePath = path.join(
+    outputDir,
+    fileName
+);
 
 
 // -------------------------------------------------------
-// 5. Event 구조화 데이터 만들기
+// 6. 종목
 // -------------------------------------------------------
 
-function createEventSchema(race, fileName) {
-
-    const distances = Array.isArray(race.distances)
+const distances =
+    Array.isArray(race.distances)
         ? race.distances.join(", ")
         : "";
 
-    const eventDescription =
-        `${race.name}은(는) ${race.region} ${race.place}에서 열리는 러닝대회입니다. ` +
-        `${distances} 종목이 있으며, 현재 ${race.status} 상태입니다.`;
 
-    const event = {
+// -------------------------------------------------------
+// 7. 설명
+// -------------------------------------------------------
+
+const description =
+    `${race.name}의 대회일, 지역, 장소, 참가 종목과 접수 상태를 확인하세요. ` +
+    `${race.region} ${race.place}에서 열리는 러닝대회 정보를 여기런에서 확인할 수 있습니다.`;
+
+
+// -------------------------------------------------------
+// 8. Event 구조화 데이터
+// -------------------------------------------------------
+
+const eventSchema = JSON.stringify(
+    {
         "@context": "https://schema.org",
+
         "@type": "Event",
 
         "name": race.name,
@@ -121,12 +132,15 @@ function createEventSchema(race, fileName) {
             }
         },
 
-        "eventStatus": "https://schema.org/EventScheduled",
+        "eventStatus":
+            "https://schema.org/EventScheduled",
 
         "eventAttendanceMode":
             "https://schema.org/OfflineEventAttendanceMode",
 
-        "description": eventDescription,
+        "description":
+            `${race.name}은(는) ${race.region} ${race.place}에서 열리는 러닝대회입니다. ` +
+            `${distances} 종목이 있으며, 현재 ${race.status} 상태입니다.`,
 
         "organizer": {
             "@type": "Organization",
@@ -139,16 +153,14 @@ function createEventSchema(race, fileName) {
 
         "url":
             `https://sanggeon90.github.io/yeogirun/races/${fileName}`
-    };
-
-    // JSON.stringify를 사용해서
-    // JSON-LD 내부의 특수문자를 안전하게 처리
-    return JSON.stringify(event, null, 4);
-}
+    },
+    null,
+    4
+);
 
 
 // -------------------------------------------------------
-// 6. WebSite 구조화 데이터
+// 9. WebSite 구조화 데이터
 // -------------------------------------------------------
 
 const websiteSchema = JSON.stringify(
@@ -174,36 +186,10 @@ const websiteSchema = JSON.stringify(
 
 
 // -------------------------------------------------------
-// 7. 상세페이지 생성
+// 10. HTML 생성
 // -------------------------------------------------------
 
-races.forEach((race, index) => {
-
-    const fileName = createFileName(race, index);
-
-    const filePath = path.join(
-        outputDir,
-        fileName
-    );
-
-    const distances =
-        Array.isArray(race.distances)
-            ? race.distances.join(", ")
-            : "";
-
-    const description =
-        `${race.name}의 대회일, 지역, 장소, 참가 종목과 접수 상태를 확인하세요. ` +
-        `${race.region} ${race.place}에서 열리는 러닝대회 정보를 여기런에서 확인할 수 있습니다.`;
-
-    const eventSchema =
-        createEventSchema(race, fileName);
-
-
-    // ---------------------------------------------------
-    // 8. HTML 생성
-    // ---------------------------------------------------
-
-    const html = `<!DOCTYPE html>
+const html = `<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -522,28 +508,17 @@ ${eventSchema}
 `;
 
 
-    // ---------------------------------------------------
-    // 9. 파일 저장
-    // ---------------------------------------------------
-
-    fs.writeFileSync(
-        filePath,
-        html,
-        "utf8"
-    );
-
-    console.log(
-        `생성 완료: ${filePath}`
-    );
-
-});
-
-
 // -------------------------------------------------------
-// 10. 완료 메시지
+// 11. 파일 저장
 // -------------------------------------------------------
+
+fs.writeFileSync(
+    filePath,
+    html,
+    "utf8"
+);
+
 
 console.log("");
-console.log(
-    `총 ${races.length}개 상세페이지 생성 완료`
-);
+console.log(`생성 완료: ${filePath}`);
+console.log("테스트용으로 이일선마라톤 1개만 생성했습니다.");
