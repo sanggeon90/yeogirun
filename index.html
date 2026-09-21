@@ -2662,11 +2662,34 @@ function updateStats() {
    대회 카드
    ========================================================= */
 
+```javascript
 function createRaceCard(race, index) {
 
     const card = document.createElement("article");
 
     card.className = "race-card";
+
+    /* =====================================================
+       상세페이지 주소 만들기
+       ===================================================== */
+
+    let detailPage = "";
+
+    // 이일선마라톤은 파일명이 예외적임
+    if (race.name === "2026 이일선마라톤") {
+
+        detailPage =
+            "races/2026-iilseon-marathon.html";
+
+    } else {
+
+        const raceNumber =
+            String(index + 1).padStart(3, "0");
+
+        detailPage =
+            `races/${race.date}-race-${raceNumber}.html`;
+    }
+
 
     const isOpen =
         race.status === "접수 중";
@@ -2674,12 +2697,14 @@ function createRaceCard(race, index) {
     const statusClass =
         isOpen ? "open" : "closed";
 
+
     const distanceHtml =
         (race.distances || [])
         .map(distance =>
             `<span class="distance-tag">${distance}</span>`
         )
         .join("");
+
 
     let officialLink = "";
 
@@ -2716,6 +2741,7 @@ function createRaceCard(race, index) {
             </div>
         `;
     }
+
 
     card.innerHTML = `
 
@@ -2756,12 +2782,15 @@ function createRaceCard(race, index) {
             }
         </div>
 
-        <button
+
+        <!-- 상세페이지로 이동하는 실제 링크 -->
+        <a
             class="detail-button"
-            onclick="toggleDetails(${index})"
+            href="${detailPage}"
         >
             상세 정보 보기
-        </button>
+        </a>
+
 
         <div
             class="details"
@@ -2817,6 +2846,8 @@ function createRaceCard(race, index) {
 
     return card;
 }
+```
+
 
 
 /* =========================================================
