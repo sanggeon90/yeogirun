@@ -1818,17 +1818,6 @@ const races = [
     url: "https://teddymarathon.com/"
   },
   {
-    name: "대전 빵빵런2026",
-    date: "2026-10-09",
-    region: "대전",
-    place: "대전 엑스포시민광장",
-    distances: ["공식 홈페이지 확인"],
-    status: "접수 중",
-    price: "공식 홈페이지 확인",
-    period: "",
-    url: "https://bbangrun.com/"
-  },
-  {
     name: "굿네이버스 레이스 with 띵크어스 - 광주 레이스",
     date: "2026-10-17",
     region: "광주",
