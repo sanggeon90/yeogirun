@@ -800,17 +800,7 @@ const races = [
         url: ""
     },
 
-    {
-        name: "2026 제2회 아산 이순신 트레일 60K",
-        date: "2026-10-03",
-        region: "충남",
-        place: "아산 신정호 이순신장군 동상",
-        distances: ["60km"],
-        status: "접수 중",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
+   
 
     {
         name: "2026 ROK Army Trail Running",
@@ -1472,17 +1462,7 @@ const races = [
         url: "https://xn--289av7rnxbd06bmrc.com/"
     },
 
-    {
-        name: "2026 경청마라톤",
-        date: "2026-10-17",
-        region: "서울",
-        place: "신정교 하부 영롱이 억새구장",
-        distances: ["하프", "10km", "5km"],
-        status: "접수 중",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
+    
 
     {
         name: "제2회 1019 평화마라톤",
@@ -1556,17 +1536,7 @@ const races = [
         url: ""
     },
 
-    {
-        name: "2026 하남 당정마라톤",
-        date: "2026-10-18",
-        region: "경기",
-        place: "하남스타필드 앞 당정뜰",
-        distances: ["10km", "5km"],
-        status: "접수 중",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
+    
 
     {
         name: "2026 아시아오픈마라톤",
@@ -1593,7 +1563,7 @@ const races = [
     },
 
     {
-        name: "제22회 대구 북구마라톤",
+        name: "제22회 북구사랑마라톤대회",
         date: "2026-10-18",
         region: "대구",
         place: "금호강 산격야영장",
