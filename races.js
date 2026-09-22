@@ -1801,4 +1801,4 @@
 
 ];
 
-console.log("어디런 대회 수:", races.length);
+console.log("여기런 대회 수:", races.length);
