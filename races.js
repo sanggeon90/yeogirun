@@ -597,7 +597,7 @@ const races = [
         date: "2026-09-20",
         region: "경기",
         place: "미사 조정경기장",
-        distances: ["10km", "5km"],
+        distances: ["10km", "6km"],
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
