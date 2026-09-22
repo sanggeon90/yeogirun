@@ -1,8 +1,9 @@
- const races = [
+const races = [
 
     // =========================================================
     // 2026년 9월
     // =========================================================
+
     {
         name: "제14회 설악산공룡능선 CLIMBATHON",
         date: "2026-09-03",
@@ -24,7 +25,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.taebaektrail.com/"
     },
 
     {
@@ -60,7 +61,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://dmz.wizrun.com/"
     },
 
     {
@@ -72,7 +73,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://scultra100.net/"
     },
 
     {
@@ -108,7 +109,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://amarunsb.com/"
     },
 
     {
@@ -252,7 +253,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://gnrace.kr/"
     },
 
     {
@@ -276,7 +277,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://88run.kr/"
     },
 
     {
@@ -300,7 +301,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.herorace.kr/"
     },
 
     {
@@ -312,7 +313,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.speedtrailrun.kr/"
     },
 
     {
@@ -375,8 +376,6 @@
         url: ""
     },
 
-   
-
     {
         name: "제16회 스마일런 페스티벌",
         date: "2026-09-13",
@@ -386,7 +385,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.smilerun.co.kr/"
     },
 
     {
@@ -422,7 +421,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://runseoulrun.com/"
     },
 
     {
@@ -590,7 +589,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.gongjumarathon.com/"
     },
 
     {
@@ -602,7 +601,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://handonrun.com/"
     },
 
     {
@@ -614,7 +613,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://songdorun.net/"
     },
 
     {
@@ -638,7 +637,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.gprun.com/"
     },
 
     {
@@ -689,10 +688,8 @@
         url: ""
     },
 
-
     // =========================================================
     // 2026년 10월
-    // 아래 92개 = 9월 58개와 합쳐 정확히 150개
     // =========================================================
 
     {
@@ -848,7 +845,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://run.ytn.co.kr/"
     },
 
     {
@@ -872,7 +869,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://dalseomarathon.com/"
     },
 
     {
@@ -896,7 +893,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.bookcity.or.kr/"
     },
 
     {
@@ -908,7 +905,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://andongmarathon.com/"
     },
 
     {
@@ -932,7 +929,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.gmrun.kr/"
     },
 
     {
@@ -944,7 +941,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.sonohotelsresorts.com/calm_gju"
     },
 
     {
@@ -956,7 +953,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.emarathon.or.kr/"
     },
 
     {
@@ -980,7 +977,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://seoulopen.or.kr/"
     },
 
     {
@@ -1004,7 +1001,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://peacemarathon.co.kr/"
     },
 
     {
@@ -1220,7 +1217,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://heartrun.co.kr/"
     },
 
     {
@@ -1229,7 +1226,7 @@
         region: "충남",
         place: "천안삼거리공원",
         distances: ["100km", "60km"],
-        status: "접수 중",
+        status: "대회 취소",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1268,7 +1265,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://rocknrun.kr/Jinangowon_Forestival"
     },
 
     {
@@ -1289,10 +1286,10 @@
         region: "인천",
         place: "인천로봇랜드 로봇타워",
         distances: ["10km", "5km"],
-        status: "접수 마감",
+        status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://futurerun.co.kr/"
     },
 
     {
@@ -1340,7 +1337,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.ptportmarathon.com/"
     },
 
     {
@@ -1364,7 +1361,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.pinkrun.kr/"
     },
 
     {
@@ -1376,7 +1373,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://run.uaf.co.kr/"
     },
 
     {
@@ -1424,7 +1421,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://dtrail.co.kr/"
     },
 
     {
@@ -1436,7 +1433,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.gyeongjumarathon.com/"
     },
 
     {
@@ -1472,7 +1469,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://xn--289av7rnxbd06bmrc.com/"
     },
 
     {
@@ -1544,7 +1541,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://119memorial.com/"
     },
 
     {
@@ -1616,7 +1613,7 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://dcmarathon.or.kr/"
     },
 
     {
@@ -1709,10 +1706,10 @@
         region: "전북",
         place: "익산시종합운동장",
         distances: ["10km", "6.4km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://iksangiverun.or.kr/"
     },
 
     {
@@ -1748,7 +1745,7 @@
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://sejongrun26.com/"
     },
 
     {
@@ -1796,13 +1793,14 @@
         status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
-        url: ""
+        url: "https://www.gmrun.kr/"
     }
-
 ];
 
 console.log("여기런 대회 수:", races.length);
 
+// 브라우저에서는 전역 변수로 사용
+// GitHub Actions / Node.js에서는 require()로 사용
 if (typeof module !== "undefined" && module.exports) {
     module.exports = races;
 }
