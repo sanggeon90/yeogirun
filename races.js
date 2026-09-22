@@ -1802,3 +1802,7 @@
 ];
 
 console.log("여기런 대회 수:", races.length);
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = races;
+}
