@@ -1794,7 +1794,216 @@ const races = [
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://www.gmrun.kr/"
-    }
+    },
+      {
+    name: "2026 생명사랑 밤길걷기 인천",
+    date: "2026-09-01",
+    region: "인천",
+    place: "인천 전역 / 원하는 장소",
+    distances: ["걷기"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "2026-09-01 ~ 2026-09-30",
+    url: "https://incheon.onesteponelife.com"
+  },
+  {
+    name: "2026 인제베어와 함께하는 테디서킷런",
+    date: "2026-10-05",
+    region: "강원",
+    place: "인제 스피디움",
+    distances: ["5km", "10km"],
+    status: "접수 중",
+    price: "65,000원",
+    period: "현장 신청",
+    url: "https://teddymarathon.com/"
+  },
+  {
+    name: "대전 빵빵런2026",
+    date: "2026-10-09",
+    region: "대전",
+    place: "대전 엑스포시민광장",
+    distances: ["공식 홈페이지 확인"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "",
+    url: "https://bbangrun.com/"
+  },
+  {
+    name: "굿네이버스 레이스 with 띵크어스 - 광주 레이스",
+    date: "2026-10-17",
+    region: "광주",
+    place: "황룡친수공원 일원",
+    distances: ["5km"],
+    status: "접수 중",
+    price: "30,000원",
+    period: "2026-09-07 ~ 2026-09-30",
+    url: "https://gnrace.kr/"
+  },
+  {
+    name: "2026 경청마라톤",
+    date: "2026-10-17",
+    region: "서울",
+    place: "신정교 하부 영롱이 억새구장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "2026-07-07 ~ 2026-10-07",
+    url: ""
+  },
+  {
+    name: "2026 옥스팜 트레일워커 서울",
+    date: "2026-10-17",
+    region: "서울",
+    place: "한국프레스센터 광장 ~ 세종로공원",
+    distances: ["20km"],
+    status: "접수 중",
+    price: "150,000원/팀",
+    period: "2026-08-03 ~ 2026-09-28",
+    url: "https://www.oxfamtrailwalker.or.kr/ko/seoul-20k"
+  },
+  {
+    name: "한탄강 울트라 레이크 트레일",
+    date: "2026-10-18",
+    region: "경기",
+    place: "한탄강 세계지질공원 내 다목적광장",
+    distances: ["52K", "25K", "13K"],
+    status: "접수 중",
+    price: "52K 160,000원 / 25K 100,000원 / 13K 60,000원",
+    period: "2026-10-17 ~ 2026-10-18",
+    url: "https://ultralaketrail.com/"
+  },
+  {
+    name: "Freedom Walk & Run 2026",
+    date: "2026-10-24",
+    region: "서울",
+    place: "반포한강공원 세빛섬 주변 한강변 보행로",
+    distances: ["6km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-09-02 ~ 2026-10-20",
+    url: "https://freedomwalk.run/2026g"
+  },
+  {
+    name: "2026 오티즘 레이스",
+    date: "2026-10-31",
+    region: "서울",
+    place: "상암 평화의공원 평화광장",
+    distances: ["하프", "10km", "4.2km"],
+    status: "접수 마감",
+    price: "40,000원",
+    period: "2026-07-08 ~ 2026-09-09",
+    url: "https://www.autismrace.com/"
+  },
+  {
+    name: "2026 JUST RUN10 포천",
+    date: "2026-10-31",
+    region: "경기",
+    place: "포천시종합운동장",
+    distances: ["10km", "5km"],
+    status: "접수 마감",
+    price: "공식 홈페이지 확인",
+    period: "2026-08-11 ~ 2026-09-11",
+    url: ""
+  },
+  {
+    name: "제7회 중소기업인 氣살리기 마라톤대회",
+    date: "2026-10-31",
+    region: "서울",
+    place: "안양천 축구장 (1호선 구일역 하부)",
+    distances: ["5km", "10km", "하프"],
+    status: "접수 중",
+    price: "5km 44,000원 / 10km·하프 55,000원",
+    period: "2026-08-07 ~ 2026-10-18",
+    url: "https://kasmirun.kr/"
+  },
+  {
+    name: "2026 김천 전국마라톤 대회",
+    date: "2026-11-01",
+    region: "경북",
+    place: "김천종합스포츠타운 보조경기장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 마감",
+    price: "공식 홈페이지 확인",
+    period: "2026-09-18까지",
+    url: "https://gcmarathon.co.kr/"
+  },
+  {
+    name: "2026 에그런",
+    date: "2026-11-07",
+    region: "세종",
+    place: "국립세종수목원 축제마당",
+    distances: ["5km"],
+    status: "접수 중",
+    price: "정기후원 5,000원",
+    period: "2026-09-07 ~ 2026-10-07",
+    url: "https://eggrun2026.imweb.me/"
+  },
+  {
+    name: "제22회 국방일보 전우마라톤대회",
+    date: "2026-11-07",
+    region: "경기",
+    place: "임진각 평화누리공원",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "20,000원",
+    period: "2026-09-07 ~ 2026-10-08",
+    url: "https://www.dema.mil.kr/marathon/intro/mainPoint.do"
+  },
+  {
+    name: "런텐 13차 레이스 JUST RUN10 대전",
+    date: "2026-11-07",
+    region: "대전",
+    place: "엑스포다리 인근",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "",
+    url: ""
+  },
+  {
+    name: "레디, 셋, 공익런!",
+    date: "2026-11-07",
+    region: "충북",
+    place: "청주 무심천체육공원 롤러스케이트장",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "25,000원",
+    period: "2026-09-20 확인 / ~2026-10-06",
+    url: "https://app.notion.com/p/2026-3c97e45d0696800ca05dde948858ed26"
+  },
+  {
+    name: "2026 라운드랩 RUN",
+    date: "2026-11-08",
+    region: "강원",
+    place: "춘천 송암스포츠타운 종합경기장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "2026-08-07 ~ 선착순 마감",
+    url: "https://www.kw-marathon.com/"
+  },
+  {
+    name: "제3회 자유민주 마라톤대회",
+    date: "2026-11-08",
+    region: "서울",
+    place: "서울광장",
+    distances: ["10km", "6.10km"],
+    status: "접수 중",
+    price: "10km 40,000원 / 6.10km 35,000원",
+    period: "2026-09-04 ~ 선착순 마감",
+    url: "https://610run.kr/"
+  },
+  {
+    name: "2026 강남하프마라톤",
+    date: "2026-11-08",
+    region: "서울",
+    place: "대치유수지 체육공원",
+    distances: ["하프", "10km"],
+    status: "접수 중",
+    price: "하프 65,000원 / 10km 60,000원",
+    period: "2026-09-14 ~ 2026-10-23",
+    url: "https://comport11.oopy.io/"
+  }
 ];
 
 console.log("여기런 대회 수:", races.length);
