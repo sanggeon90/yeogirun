@@ -521,18 +521,6 @@ const races = [
     },
 
     {
-        name: "제2회 경기신문 씨사이드마라톤",
-        date: "2026-09-19",
-        region: "인천",
-        place: "영종구 씨사이드파크",
-        distances: ["하프", "10km", "5km"],
-        status: "접수 마감",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
-
-    {
         name: "2026 금산인삼축제 마라톤",
         date: "2026-09-19",
         region: "충남",
@@ -605,7 +593,7 @@ const races = [
     },
 
     {
-        name: "2026 인천송도국제마라톤",
+        name: "제26회 인천송도국제하프마라톤",
         date: "2026-09-20",
         region: "인천",
         place: "국립 인천대학교 송도캠퍼스 정문 앞",
@@ -617,7 +605,7 @@ const races = [
     },
 
     {
-        name: "2026 울산 남구청장배 마라톤",
+        name: "2026 울산남구육상연맹 회장배 단축마라톤",
         date: "2026-09-20",
         region: "울산",
         place: "태화강국가정원 왕버들 공연장",
@@ -815,7 +803,7 @@ const races = [
     },
 
     {
-        name: "2026 S-OIL 50주년 마라톤",
+        name: "S-OIL과 함께하는 감동의 마라톤",
         date: "2026-10-04",
         region: "서울",
         place: "월드컵공원 평화광장",
@@ -1024,7 +1012,7 @@ const races = [
         date: "2026-10-09",
         region: "충남",
         place: "세종시 중앙공원 도시축제마당",
-        distances: ["10.9km"],
+        distances: ["10.9km", "5.15km"],
         status: "접수 중",
         price: "공식 홈페이지 확인",
         period: "",
@@ -1198,19 +1186,6 @@ const races = [
         period: "",
         url: "https://heartrun.co.kr/"
     },
-
-    {
-        name: "제7회 천안삼거리 흥타령 울트라마라톤",
-        date: "2026-10-10",
-        region: "충남",
-        place: "천안삼거리공원",
-        distances: ["100km", "60km"],
-        status: "대회 취소",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
-
     {
         name: "2026 서울레이스",
         date: "2026-10-11",
