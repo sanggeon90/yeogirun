@@ -358,7 +358,7 @@ const races = [
         region: "대전",
         place: "대전엑스포시민광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -370,7 +370,7 @@ const races = [
         region: "경북",
         place: "포항운하관 광장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -394,7 +394,7 @@ const races = [
         region: "인천",
         place: "강화함상공원",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -418,7 +418,7 @@ const races = [
         region: "서울",
         place: "서울광장",
         distances: ["하프", "10km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://runseoulrun.com/"
@@ -430,7 +430,7 @@ const races = [
         region: "서울",
         place: "구일역 하부 인라인스케이트장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -466,7 +466,7 @@ const races = [
         region: "경남",
         place: "김해 대동생태체육공원 축구장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -490,7 +490,7 @@ const races = [
         region: "경기",
         place: "고양시 일산호수공원",
         distances: ["10km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -538,7 +538,7 @@ const races = [
         region: "전남",
         place: "여수 화정면 낭도출장소 앞 주차장",
         distances: ["13km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -586,7 +586,7 @@ const races = [
         region: "경기",
         place: "미사 조정경기장",
         distances: ["10km", "6km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://handonrun.com/"
@@ -598,7 +598,7 @@ const races = [
         region: "인천",
         place: "국립 인천대학교 송도캠퍼스 정문 앞",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://songdorun.net/"
@@ -610,7 +610,7 @@ const races = [
         region: "울산",
         place: "태화강국가정원 왕버들 공연장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -646,7 +646,7 @@ const races = [
         region: "서울",
         place: "평화의공원 평화광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -670,7 +670,7 @@ const races = [
         region: "경기",
         place: "대부향기테마파크",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -710,7 +710,7 @@ const races = [
         region: "서울",
         place: "상암 월드컵공원 평화광장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -722,7 +722,7 @@ const races = [
         region: "충북",
         place: "무심천체육공원",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -746,7 +746,7 @@ const races = [
         region: "충남",
         place: "서산스포츠테마파크",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -892,7 +892,7 @@ const races = [
         region: "강원",
         place: "홍천종합운동장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1013,7 +1013,7 @@ const races = [
         region: "충남",
         place: "세종시 중앙공원 도시축제마당",
         distances: ["10.9km", "5.15km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1049,7 +1049,7 @@ const races = [
         region: "전남",
         place: "고흥군 박지성공설운동장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1145,7 +1145,7 @@ const races = [
         region: "충북",
         place: "충주 앙성온천광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1204,7 +1204,7 @@ const races = [
         region: "전남",
         place: "나주종합스포츠파크",
         distances: ["풀", "하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1216,7 +1216,7 @@ const races = [
         region: "전북",
         place: "국립진안고원산림치유원",
         distances: ["16km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://rocknrun.kr/Jinangowon_Forestival"
@@ -1252,7 +1252,7 @@ const races = [
         region: "서울",
         place: "구일역 안양천 축구장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1276,7 +1276,7 @@ const races = [
         region: "서울",
         place: "광평교운동장",
         distances: ["풀", "31km", "하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1300,7 +1300,7 @@ const races = [
         region: "경북",
         place: "문경시민운동장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1312,7 +1312,7 @@ const races = [
         region: "서울",
         place: "상암월드컵공원 평화광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://www.pinkrun.kr/"
@@ -1336,7 +1336,7 @@ const races = [
         region: "충남",
         place: "천안종합운동장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1360,7 +1360,7 @@ const races = [
         region: "경기",
         place: "미사경정공원 관리동 광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1420,7 +1420,7 @@ const races = [
         region: "충남",
         place: "태안군 안면읍 꽃지해수욕장 일원",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://xn--289av7rnxbd06bmrc.com/"
@@ -1434,7 +1434,7 @@ const races = [
         region: "전남",
         place: "여수진남경기장 주경기장",
         distances: ["5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1446,7 +1446,7 @@ const races = [
         region: "광주",
         place: "광주공원 앞 광주천변 광주교",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1458,7 +1458,7 @@ const races = [
         region: "경기",
         place: "동막교인라인광장",
         distances: ["하프", "10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1482,7 +1482,7 @@ const races = [
         region: "세종",
         place: "세종중앙공원 도시축제마당",
         distances: ["11.9km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: "https://119memorial.com/"
@@ -1494,7 +1494,7 @@ const races = [
         region: "광주",
         place: "상무시민공원",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1508,7 +1508,7 @@ const races = [
         region: "서울",
         place: "서울 광화문광장",
         distances: ["하프", "10km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1556,7 +1556,7 @@ const races = [
         region: "경기",
         place: "여주 현암지구공원",
         distances: ["하프", "10km", "4km", "1km 휠체어"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1580,7 +1580,7 @@ const races = [
         region: "경남",
         place: "창원스포츠파크 보조경기장",
         distances: ["6km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1604,7 +1604,7 @@ const races = [
         region: "서울",
         place: "서울 월드컵경기장 평화광장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1616,7 +1616,7 @@ const races = [
         region: "경북",
         place: "안동 탈춤공원",
         distances: ["하프", "10km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1628,7 +1628,7 @@ const races = [
         region: "서울",
         place: "신정교하부육상트랙구장",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "접수 마감",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
@@ -1652,7 +1652,7 @@ const races = [
         region: "경기",
         place: "하남 미사 경정공원",
         distances: ["10km", "5km"],
-        status: "접수 중",
+        status: "대회 취소",
         price: "공식 홈페이지 확인",
         period: "",
         url: ""
