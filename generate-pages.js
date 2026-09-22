@@ -1,823 +1,507 @@
+
 const fs = require("fs");
 const path = require("path");
 
-/*
-=========================================================
-여기런 상세페이지 + sitemap 자동 생성기
-=========================================================
-1. races.js의 모든 대회 데이터를 읽습니다.
-2. /races/ 폴더에 상세페이지를 생성합니다.
-3. 기존 이일선마라톤 URL은 유지합니다.
-4. 루트의 sitemap.xml도 자동으로 생성합니다.
-=========================================================
-*/
-
-
-// -------------------------------------------------------
-// 1. races.js 읽기
-// -------------------------------------------------------
-
-const racesFile = fs.readFileSync(
-    "./races.js",
-    "utf8"
-);
-
-const match = racesFile.match(
-    /const races\s*=\s*(\[[\s\S]*?\]);/
-);
-
-if (!match) {
-    throw new Error(
-        "races 배열을 찾을 수 없습니다."
-    );
-}
-
-const races = Function(
-    `"use strict"; return ${match[1]}`
-)();
+const races = require("./races.js");
 
 console.log(
     `races.js에서 ${races.length}개 대회를 확인했습니다.`
 );
 
-
-// -------------------------------------------------------
-// 2. races 폴더 준비
-// -------------------------------------------------------
-
-const outputDir = "./races";
+const outputDir = path.join(__dirname, "races");
 
 if (!fs.existsSync(outputDir)) {
-
-    fs.mkdirSync(
-        outputDir,
-        { recursive: true }
-    );
-
+    fs.mkdirSync(outputDir, { recursive: true });
 }
 
-
-// -------------------------------------------------------
-// 3. HTML 문자열 처리
-// -------------------------------------------------------
-
 function escapeHtml(value) {
-
     return String(value ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-
+        .replace(/'/g, "&#039;");
 }
 
-
-// -------------------------------------------------------
-// 4. 파일명 만들기
-// -------------------------------------------------------
-//
-// 이일선마라톤은 기존 Google 색인 URL을 유지합니다.
-//
-// 나머지는 날짜 + 순번 방식입니다.
-//
-// 예:
-// 2026-09-03-race-001.html
-// -------------------------------------------------------
-
-function createFileName(
-    race,
-    index
-) {
-
-    if (
-        race.name ===
-        "2026 이일선마라톤"
-    ) {
-
+function createFileName(race, index) {
+    if (race.name === "2026 이일선마라톤") {
         return "2026-iilseon-marathon.html";
-
     }
 
-    const number =
-        String(index + 1)
-            .padStart(3, "0");
+    const raceNumber = String(index + 1).padStart(3, "0");
 
-    return `${race.date}-race-${number}.html`;
-
+    return `${race.date}-race-${raceNumber}.html`;
 }
 
-
-// -------------------------------------------------------
-// 5. Event 구조화 데이터
-// -------------------------------------------------------
-
-function createEventSchema(
-    race,
-    fileName
-) {
-
-    const distances =
-        Array.isArray(race.distances)
-            ? race.distances.join(", ")
-            : "";
-
-    const eventDescription =
-        `${race.name}은(는) ${race.region} ${race.place}에서 열리는 러닝대회입니다. ` +
-        `${distances} 종목이 있으며, 현재 ${race.status} 상태입니다.`;
-
-    const event = {
-
-        "@context":
-            "https://schema.org",
-
-        "@type":
-            "Event",
-
-        "name":
-            race.name,
-
-        "startDate":
-            race.date,
-
-        "endDate":
-            race.date,
-
-        "location": {
-
-            "@type":
-                "Place",
-
-            "name":
-                race.place,
-
-            "address": {
-
-                "@type":
-                    "PostalAddress",
-
-                "addressRegion":
-                    race.region,
-
-                "addressCountry":
-                    "KR"
-
-            }
-
-        },
-
-        "eventStatus":
-            "https://schema.org/EventScheduled",
-
+function createEventSchema(race, canonicalUrl) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": race.name,
+        "startDate": race.date,
+        "endDate": race.date,
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode":
             "https://schema.org/OfflineEventAttendanceMode",
-
         "description":
-            eventDescription,
-
-        "organizer": {
-
-            "@type":
-                "Organization",
-
-            "name":
-                "여기런",
-
-            "url":
-                "https://sanggeon90.github.io/yeogirun/"
-
+            `${race.name} 일정, 장소, 참가 종목 및 접수 정보를 확인할 수 있습니다.`,
+        "location": {
+            "@type": "Place",
+            "name": race.place || race.region || "대한민국",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": race.region || "대한민국",
+                "addressCountry": "KR"
+            }
         },
-
-        "url":
-            `https://sanggeon90.github.io/yeogirun/races/${fileName}`
-
+        "organizer": {
+            "@type": "Organization",
+            "name": "여기런",
+            "url": "https://sanggeon90.github.io/yeogirun/"
+        },
+        "url": canonicalUrl
     };
-
-    return JSON.stringify(
-        event,
-        null,
-        4
-    );
-
 }
 
+function createHtml(race, index) {
+    const fileName = createFileName(race, index);
 
-// -------------------------------------------------------
-// 6. WebSite 구조화 데이터
-// -------------------------------------------------------
+    const canonicalUrl =
+        `https://sanggeon90.github.io/yeogirun/races/${fileName}`;
 
-const websiteSchema =
-    JSON.stringify(
+    const distances =
+        Array.isArray(race.distances) && race.distances.length
+            ? race.distances.join(", ")
+            : "공식 홈페이지 확인";
 
-        {
+    const officialLink =
+        race.url && race.url.trim() !== ""
+            ? `
+                <p>
+                    <a
+                        href="${escapeHtml(race.url)}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        공식 홈페이지 바로가기
+                    </a>
+                </p>
+            `
+            : `
+                <p>공식 홈페이지 확인</p>
+            `;
 
-            "@context":
-                "https://schema.org",
-
-            "@type":
-                "WebSite",
-
-            "name":
-                "여기런",
-
-            "alternateName":
-                "여기런 - 전국 러닝대회 일정",
-
-            "url":
-                "https://sanggeon90.github.io/yeogirun/",
-
-            "description":
-                "전국 마라톤과 러닝대회 일정을 제공하는 러닝대회 정보 사이트입니다."
-
-        },
-
-        null,
-
-        4
-
+    const eventSchema = createEventSchema(
+        race,
+        canonicalUrl
     );
 
-
-// -------------------------------------------------------
-// 7. 모든 상세페이지 생성
-// -------------------------------------------------------
-
-const generatedFiles = [];
-
-races.forEach(
-    (race, index) => {
-
-        const fileName =
-            createFileName(
-                race,
-                index
-            );
-
-        const filePath =
-            path.join(
-                outputDir,
-                fileName
-            );
-
-
-        const distances =
-            Array.isArray(
-                race.distances
-            )
-                ? race.distances.join(", ")
-                : "";
-
-
-        const description =
-            `${race.name}의 대회일, 지역, 장소, 참가 종목과 접수 상태를 확인하세요. ` +
-            `${race.region} ${race.place}에서 열리는 러닝대회 정보를 여기런에서 확인할 수 있습니다.`;
-
-
-        const eventSchema =
-            createEventSchema(
-                race,
-                fileName
-            );
-
-
-        // ------------------------------------------------
-        // HTML
-        // ------------------------------------------------
-
-        const html = `<!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>
-        ${escapeHtml(race.name)} 일정·참가정보 | 여기런
+        ${escapeHtml(race.name)}
+        일정·참가정보 | 여기런
     </title>
 
+    <meta
+        name="description"
+        content="${escapeHtml(
+            `${race.name} 대회 일정, 장소, 종목, 접수 정보를 확인하세요.`
+        )}"
+    >
 
-    <meta name="description"
-          content="${escapeHtml(description)}">
+    <meta
+        name="robots"
+        content="index, follow"
+    >
 
+    <link
+        rel="canonical"
+        href="${canonicalUrl}"
+    >
 
-    <meta name="robots"
-          content="index, follow">
+    <meta
+        property="og:type"
+        content="website"
+    >
 
+    <meta
+        property="og:title"
+        content="${escapeHtml(race.name)} 일정·참가정보 | 여기런"
+    >
 
-    <link rel="canonical"
-          href="https://sanggeon90.github.io/yeogirun/races/${fileName}">
+    <meta
+        property="og:description"
+        content="${escapeHtml(
+            `${race.name} 일정, 장소, 종목, 접수 정보를 확인하세요.`
+        )}"
+    >
 
+    <meta
+        property="og:url"
+        content="${canonicalUrl}"
+    >
 
-    <!-- Open Graph -->
+    <meta
+        property="og:site_name"
+        content="여기런"
+    >
 
-    <meta property="og:title"
-          content="${escapeHtml(race.name)} 일정·참가정보 | 여기런">
-
-
-    <meta property="og:description"
-          content="${escapeHtml(description)}">
-
-
-    <meta property="og:type"
-          content="website">
-
-
-    <meta property="og:url"
-          content="https://sanggeon90.github.io/yeogirun/races/${fileName}">
-
-
-    <meta property="og:site_name"
-          content="여기런">
-
-
-    <!-- Google Analytics -->
-
-    <script async
-        src="https://www.googletagmanager.com/gtag/js?id=G-RDRN60R6ZB">
-    </script>
-
+    <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-RDRN60R6ZB"
+    ></script>
 
     <script>
-
-        window.dataLayer =
-            window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
         function gtag(){
             dataLayer.push(arguments);
         }
 
-        gtag(
-            'js',
-            new Date()
-        );
+        gtag('js', new Date());
 
-        gtag(
-            'config',
-            'G-RDRN60R6ZB'
-        );
-
+        gtag('config', 'G-RDRN60R6ZB');
     </script>
-
-
-    <!-- WebSite 구조화 데이터 -->
 
     <script type="application/ld+json">
-${websiteSchema}
+${JSON.stringify(eventSchema, null, 4)}
     </script>
-
-
-    <!-- Event 구조화 데이터 -->
-
-    <script type="application/ld+json">
-${eventSchema}
-    </script>
-
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
         body {
-
+            margin: 0;
             font-family:
-                Arial,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
                 "Noto Sans KR",
+                Arial,
                 sans-serif;
-
-            max-width:
-                800px;
-
-            margin:
-                0 auto;
-
-            padding:
-                20px;
-
-            line-height:
-                1.7;
-
-            color:
-                #222;
-
-            background:
-                #fff;
-
+            background: #f5f7fb;
+            color: #172033;
         }
 
+        .container {
+            width: min(900px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-inner {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: #2563eb;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        main {
+            padding: 40px 0 70px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+        }
 
         h1 {
-
-            margin-bottom:
-                10px;
-
+            margin: 0 0 20px;
+            font-size: 30px;
+            line-height: 1.4;
         }
 
-
-        .intro {
-
-            color:
-                #555;
-
-            margin-bottom:
-                25px;
-
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
-
 
         table {
-
-            width:
-                100%;
-
-            border-collapse:
-                collapse;
-
-            margin-bottom:
-                30px;
-
+            width: 100%;
+            border-collapse: collapse;
         }
-
 
         th,
         td {
-
-            border:
-                1px solid #ddd;
-
-            padding:
-                10px;
-
-            text-align:
-                left;
-
+            padding: 14px 10px;
+            border-bottom: 1px solid #eef1f5;
+            text-align: left;
+            vertical-align: top;
         }
-
 
         th {
-
-            width:
-                120px;
-
-            background:
-                #f7f7f7;
-
+            width: 120px;
+            color: #64748b;
+            font-size: 14px;
         }
 
-
-        h2 {
-
-            margin-top:
-                30px;
-
+        td {
+            font-weight: 700;
         }
 
-
-        .links {
-
-            margin-top:
-                30px;
-
+        .official {
+            display: block;
+            margin-top: 25px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 800;
         }
 
-
-        a {
-
-            color:
-                #1769aa;
-
+        .home {
+            display: block;
+            margin-top: 12px;
+            padding: 14px;
+            border: 1px solid #dbe3ef;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #334155;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 800;
         }
-
 
         @media (max-width: 600px) {
-
-            body {
-
-                padding:
-                    15px;
-
+            .container {
+                width: min(100% - 22px, 900px);
             }
 
+            .card {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
 
             th {
-
-                width:
-                    90px;
-
+                width: 90px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            여기<span>런</span>
+        </div>
 
-    <h1>
+        <a
+            class="back"
+            href="../index.html"
+        >
+            ← 전체 대회 보기
+        </a>
+    </div>
+</header>
 
-        ${escapeHtml(race.name)}
+<main>
+    <div class="container">
 
-    </h1>
+        <article class="card">
 
-
-    <p class="intro">
-
-        ${escapeHtml(race.date)}
-
-        ${escapeHtml(race.region)}
-
-        ${escapeHtml(race.place)}
-        에서 열리는
-
-        ${escapeHtml(race.name)}
-
-        대회 정보를 확인하세요.
-
-    </p>
-
-
-    <table>
-
-
-        <tr>
-
-            <th>
-                대회일
-            </th>
-
-            <td>
-                ${escapeHtml(race.date)}
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                지역
-            </th>
-
-            <td>
-                ${escapeHtml(race.region)}
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                장소
-            </th>
-
-            <td>
-                ${escapeHtml(race.place)}
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                종목
-            </th>
-
-            <td>
-                ${escapeHtml(distances)}
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                접수 상태
-            </th>
-
-            <td>
+            <span class="status">
                 ${escapeHtml(race.status)}
-            </td>
+            </span>
 
-        </tr>
+            <h1>
+                ${escapeHtml(race.name)}
+            </h1>
 
+            <table>
+                <tr>
+                    <th>대회일</th>
+                    <td>${escapeHtml(race.date)}</td>
+                </tr>
 
-        <tr>
+                <tr>
+                    <th>지역</th>
+                    <td>${escapeHtml(race.region)}</td>
+                </tr>
 
-            <th>
-                참가비
-            </th>
+                <tr>
+                    <th>장소</th>
+                    <td>${escapeHtml(race.place)}</td>
+                </tr>
 
-            <td>
-                ${escapeHtml(race.price)}
-            </td>
+                <tr>
+                    <th>참가 종목</th>
+                    <td>${escapeHtml(distances)}</td>
+                </tr>
 
-        </tr>
-
-
-        <tr>
-
-            <th>
-                접수 기간
-            </th>
-
-            <td>
+                <tr>
+                    <th>참가비</th>
+                    <td>${escapeHtml(race.price)}</td>
+                </tr>
 
                 ${
                     race.period
-                        ? escapeHtml(
-                            race.period
-                        )
-                        : "확인된 정보 없음"
+                        ? `
+                <tr>
+                    <th>접수기간</th>
+                    <td>${escapeHtml(race.period)}</td>
+                </tr>
+                `
+                        : ""
                 }
+            </table>
 
-            </td>
-
-        </tr>
-
-
-    </table>
-
-
-    <h2>
-        대회 정보
-    </h2>
-
-
-    <p>
-
-        ${escapeHtml(race.name)}은(는)
-
-        ${escapeHtml(race.region)}
-
-        ${escapeHtml(race.place)}
-        에서 열리는 러닝대회입니다.
-
-    </p>
-
-
-    <p>
-
-        참가 종목은
-
-        ${escapeHtml(distances)}
-
-        이며,
-
-        접수 상태와 참가비 등 세부 사항은
-        대회 공식 홈페이지를 통해
-        최종 확인하시기 바랍니다.
-
-    </p>
-
-
-    <div class="links">
-
-
-        <p>
-
+            ${
+                race.url && race.url.trim() !== ""
+                    ? `
             <a
-                href="https://sanggeon90.github.io/yeogirun/"
-            >
-
-                ← 여기런 전국 러닝대회 일정으로 돌아가기
-
-            </a>
-
-        </p>
-
-
-        ${
-            race.url
-                ? `
-        <p>
-
-            <a
+                class="official"
                 href="${escapeHtml(race.url)}"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
                 공식 홈페이지 바로가기
+            </a>
+            `
+                    : `
+            <div
+                style="
+                    margin-top:25px;
+                    padding:14px;
+                    border-radius:10px;
+                    background:#f8fafc;
+                    color:#94a3b8;
+                    text-align:center;
+                    font-weight:700;
+                "
+            >
+                공식 홈페이지 확인
+            </div>
+            `
+            }
 
+            <a
+                class="home"
+                href="../index.html"
+            >
+                여기런 전체 대회 목록으로 돌아가기
             </a>
 
-        </p>
-                `
-                : ""
-        }
-
+        </article>
 
     </div>
-
+</main>
 
 </body>
+</html>`;
+}
 
-</html>
-`;
+for (let i = 0; i < races.length; i++) {
+    const race = races[i];
 
+    const fileName = createFileName(race, i);
 
-        // ------------------------------------------------
-        // 파일 저장
-        // ------------------------------------------------
+    const filePath = path.join(
+        outputDir,
+        fileName
+    );
 
-        fs.writeFileSync(
-            filePath,
-            html,
-            "utf8"
-        );
+    const html = createHtml(
+        race,
+        i
+    );
 
+    fs.writeFileSync(
+        filePath,
+        html,
+        "utf8"
+    );
+}
 
-        generatedFiles.push(
-            fileName
-        );
+const sitemapUrls = [
+    "https://sanggeon90.github.io/yeogirun/"
+];
 
+races.forEach((race, index) => {
+    const fileName = createFileName(
+        race,
+        index
+    );
 
-        console.log(
-            `생성 완료: ${filePath}`
-        );
-
-    }
-);
-
-
-// -------------------------------------------------------
-// 8. sitemap.xml 생성
-// -------------------------------------------------------
-//
-// 홈페이지 + 모든 상세페이지를 포함합니다.
-// Google 권장 방식에 따라 절대 URL을 사용합니다.
-// -------------------------------------------------------
-
-const siteUrl =
-    "https://sanggeon90.github.io/yeogirun";
-
-const sitemapUrls = [];
-
-
-// 홈페이지
-sitemapUrls.push(
-    `${siteUrl}/`
-);
-
-
-// 상세페이지
-generatedFiles.forEach(
-    (fileName) => {
-
-        sitemapUrls.push(
-            `${siteUrl}/races/${fileName}`
-        );
-
-    }
-);
-
-
-// sitemap XML 생성
-const sitemapEntries =
-    sitemapUrls
-        .map(
-            (url) => `    <url>
-        <loc>${url}</loc>
-    </url>`
-        )
-        .join("\n");
-
+    sitemapUrls.push(
+        `https://sanggeon90.github.io/yeogirun/races/${fileName}`
+    );
+});
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries}
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+${sitemapUrls
+    .map(
+        url => `    <url>
+        <loc>${url}</loc>
+    </url>`
+    )
+    .join("\n")}
 </urlset>
 `;
 
-
 fs.writeFileSync(
-    "./sitemap.xml",
+    path.join(__dirname, "sitemap.xml"),
     sitemap,
     "utf8"
 );
 
-
-// -------------------------------------------------------
-// 9. 최종 결과 출력
-// -------------------------------------------------------
-
-console.log("");
-
 console.log(
-    `총 ${races.length}개 상세페이지 생성 완료`
+    `상세페이지 ${races.length}개 생성 완료`
 );
 
 console.log(
-    `sitemap.xml에 총 ${sitemapUrls.length}개 URL을 등록했습니다.`
+    `sitemap.xml 생성 완료`
 );
 
 console.log(
-    "상세페이지 + sitemap 생성이 완료되었습니다."
+    `총 URL 수: ${sitemapUrls.length}개`
 );
