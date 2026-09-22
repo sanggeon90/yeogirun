@@ -1018,18 +1018,7 @@ const races = [
         url: ""
     },
 
-    {
-        name: "Life Love Marathon With Wyd",
-        date: "2026-10-09",
-        region: "경기",
-        place: "안성 미리내성지",
-        distances: ["10km", "5km", "5km 걷기"],
-        status: "접수 마감",
-        price: "공식 홈페이지 확인",
-        period: "",
-        url: ""
-    },
-
+   
     {
         name: "2026 한글런",
         date: "2026-10-09",
@@ -1043,7 +1032,7 @@ const races = [
     },
 
     {
-        name: "2026 수원교구 생명마라톤",
+        name: "2026 생명사랑 마라톤/걷기대회",
         date: "2026-10-09",
         region: "경기",
         place: "미리내성지",
