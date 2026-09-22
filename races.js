@@ -1962,7 +1962,210 @@ const races = [
     price: "하프 65,000원 / 10km 60,000원",
     period: "2026-09-14 ~ 2026-10-23",
     url: "https://comport11.oopy.io/"
-  }
+  },
+    {
+    name: "2026 통큰런",
+    date: "2026-11-14",
+    region: "서울",
+    place: "상암 월드컵공원 평화광장",
+    distances: ["10km", "5km", "3km"],
+    status: "접수 중",
+    price: "30,000원",
+    period: "2026-09-14 ~ 2026-10-23",
+    url: "https://tongkeun-run.com/"
+},
+
+{
+    name: "2026 영종 하늘길 마라톤",
+    date: "2026-11-14",
+    region: "인천",
+    place: "영종 씨사이드파크 일대",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "하프 55,000원 / 10km 55,000원 / 5km 45,000원",
+    period: "2026-08-24 ~ 2026-10-08",
+    url: "https://www.leaveit.co.kr/match/apply/2026-yeongjong-airway"
+},
+
+{
+    name: "스타콜 × 롤링스톤 레트로 런 IN 증평",
+    date: "2026-11-14",
+    region: "충북",
+    place: "증평군 보강천 시민체육공원",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "10km 79,000원 / 5km 69,000원",
+    period: "2026-09-15 ~ 2026-10-25",
+    url: "https://n-runplus.co.kr/Jeungpyeong"
+},
+
+{
+    name: "제9회 서울평화마라톤",
+    date: "2026-11-15",
+    region: "서울",
+    place: "신정교 하부 육상트랙구장",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "10km 50,000원 / 5km 35,000원",
+    period: "2026-07-08 ~ 2026-10-16",
+    url: ""
+},
+
+{
+    name: "RUN & ESPRESSO 10K SEOUL",
+    date: "2026-11-15",
+    region: "서울",
+    place: "서울 상암 월드컵공원 평화광장",
+    distances: ["10km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "",
+    url: "https://www.fila.co.kr/pages/fila-run-espresso-10k-seoul"
+},
+
+{
+    name: "서울 라이프마라톤",
+    date: "2026-11-21",
+    region: "서울",
+    place: "상암 평화의공원 평화광장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "하프 59,000원 / 10km 55,000원 / 5km 49,000원",
+    period: "",
+    url: "https://seoul.lifemarathon.co.kr/overview"
+},
+
+{
+    name: "JUST RUN10 대구",
+    date: "2026-11-21",
+    region: "대구",
+    place: "금호강 러닝성지·화랑교 아래",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "2026-09-11 ~ 2026-10-20",
+    url: "https://runten.co.kr/"
+},
+
+{
+    name: "2026 인천마라톤",
+    date: "2026-11-22",
+    region: "인천",
+    place: "인천아시아드 주경기장 / 운서역 일원",
+    distances: ["풀", "10km", "5km"],
+    status: "접수 마감",
+    price: "풀 80,000원 / 10km 50,000원 / 5km 30,000원",
+    period: "2026-09-07 ~ 2026-09-21",
+    url: "https://www.incheonmarathon.or.kr/"
+},
+
+{
+    name: "2026 평화의숲 마라톤",
+    date: "2026-11-22",
+    region: "서울",
+    place: "상암 월드컵공원 평화광장",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "",
+    url: "https://peace-run.kr/"
+},
+
+{
+    name: "제14회 안중근 평화 마라톤",
+    date: "2026-11-29",
+    region: "서울",
+    place: "여의도공원 문화의마당",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "공식 홈페이지 확인",
+    period: "~ 2026-11-22",
+    url: "https://www.ajgrun.kr/"
+},
+
+{
+    name: "2026 하남 미사 호수 에너지런",
+    date: "2026-12-05",
+    region: "경기",
+    place: "하남 미사 경정공원",
+    distances: ["10km", "5km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "~ 2026-11-26",
+    url: "https://energyrun.kr/"
+},
+
+{
+    name: "제23회 한강시민마라톤",
+    date: "2026-12-05",
+    region: "서울",
+    place: "여의도 물빛무대 앞 광장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-08-01 ~ 2026-10-28",
+    url: "https://www.hangangmarathon.kr/"
+},
+
+{
+    name: "2026 황영조 로드레이스",
+    date: "2026-12-06",
+    region: "인천",
+    place: "경인아라뱃길 여객터미널 아라타워 일원",
+    distances: ["하프", "10km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-08-14 ~ 2026-10-30",
+    url: "https://roadracing.co.kr/"
+},
+
+{
+    name: "제3회 긍정의힘 마라톤",
+    date: "2026-12-12",
+    region: "서울",
+    place: "신정교 하부 영롱이 억새구장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-08-30 ~ 2026-12-06",
+    url: "https://www.powerrun.kr/"
+},
+
+{
+    name: "제5회 밤섬 마라톤",
+    date: "2026-12-13",
+    region: "서울",
+    place: "상암 월드컵공원 평화광장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "60,000원",
+    period: "",
+    url: "https://www.bamseom.com/"
+},
+
+{
+    name: "제2회 청춘 릴레이 마라톤",
+    date: "2026-12-19",
+    region: "서울",
+    place: "상암 월드컵공원 평화광장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-08-12 ~ 2026-12-09",
+    url: "https://youngrun.kr/"
+},
+
+{
+    name: "2026 코리아 시즌 레이스",
+    date: "2026-12-26",
+    region: "서울",
+    place: "상암 월드컵공원 평화광장",
+    distances: ["하프", "10km", "5km"],
+    status: "접수 중",
+    price: "50,000원",
+    period: "2026-08-25 ~ 2026-12-16",
+    url: "https://k-run.kr/"
+},
 ];
 
 console.log("여기런 대회 수:", races.length);
